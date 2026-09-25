@@ -47,6 +47,11 @@ export default {
     metadata: [
       { name: "algolia-site-verification", content: "926664E87D2F88BA" },
     ],
+    // algolia: {
+    //   // appId: "YOUR_APP_ID",
+    //   // apiKey: "YOUR_SEARCH_API_KEY",
+    //   // indexName: "YOUR_INDEX_NAME",
+    // },
     image: "img/ballex.ico",
     navbar: {
       title: "BME4 教程",
@@ -58,13 +63,13 @@ export default {
         },
         {
           href: "https://github.com/withered-flower-0422/bme4-tutorial",
-          label: "GitHub",
           position: "right",
+          className: "header-link github",
         },
         {
           href: "https://store.steampowered.com/app/1114430",
-          label: "Steam",
           position: "right",
+          className: "header-link steam",
         },
       ],
     },
