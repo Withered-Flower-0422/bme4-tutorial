@@ -29,19 +29,22 @@ Ballex 的外设输入逻辑在 [图像帧](../trigger.mdx#图像帧) 中进行�
 - `key_ID`：按键编号
 - `returns`：是否发生了对应事件
 
-### `CheckMouseDown(button: Literal) -> bool`
+### `CheckMouseDown(button: Literal[0, 1, 2]) -> bool`
 
 检测当前图像帧某个鼠标按键是否恰好按下。
 
-### `CheckMouseUp(button: Literal) -> bool`
+### `CheckMouseUp(button: Literal[0, 1, 2]) -> bool`
 
 检测上一个图像帧某个鼠标按键是否恰好抬起。
 
-### `CheckMouseHold(button: Literal) -> bool`
+### `CheckMouseHold(button: Literal[0, 1, 2]) -> bool`
 
 检测当前图像帧某个鼠标按键是否按住。
 
 - `button`：鼠标按键
+  - `0`：鼠标左键
+  - `1`：鼠标中键
+  - `2`：鼠标右键
 - `returns`：是否发生了对应事件
 
 ### `GetMousePosition() -> vec2`
