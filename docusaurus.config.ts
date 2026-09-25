@@ -44,6 +44,9 @@ export default {
   ],
 
   themeConfig: {
+    metadata: [
+      { name: "algolia-site-verification", content: "926664E87D2F88BA" },
+    ],
     image: "img/ballex.ico",
     navbar: {
       title: "BME4 教程",
