@@ -1,0 +1,46 @@
+---
+sidebar_position: 1
+---
+
+# General
+
+## API
+
+### `GetTransform(ID: int) -> xform`
+
+Get transform parameters of an object.
+
+- `returns`: transform parameters
+
+### `SetTransform(ID: int, transform: xform) -> None`
+
+Set transform parameters of an object.
+
+- `transform`: transform parameters
+
+### `SetGravity(gravity: vec3) -> None`
+
+Set gravity.
+
+- `gravity`: gravity along each axis
+
+### `Instantiate(ID: int, transform: xform) -> int`
+
+Create a new object from a given object template.
+
+- `transform`: transform parameters
+- `returns`: ID of the new object
+
+### `SetActive(ID: int, active: bool) -> None`
+
+Set the active state of an object. An inactivated object will hide itself and lose its functions.
+
+- `active`: whether active
+
+### `Execute(ID: int) -> None`
+
+Run another executor.
+
+### `Destroy(ID: int) -> None`
+
+Destroy an object.

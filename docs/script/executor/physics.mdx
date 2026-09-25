@@ -1,0 +1,105 @@
+---
+sidebar_position: 2
+---
+
+# 物理
+
+## API
+
+### `PhysicsCheckExists(ID: int) -> bool`
+
+检测物理物体是否存在。
+
+- `returns`：是否存在
+
+### `PhysicsGetMass(ID: int) -> float`
+
+读取物体的质量。
+
+- `returns`：质量
+
+### `PhysicsSetMass(ID: int, mass: float) -> None`
+
+改变物体的质量。
+
+- `mass`：质量
+
+### `PhysicsGetLinearDamping(ID: int) -> float`
+
+读取物体线性阻尼。
+
+- `returns`：线性阻尼
+
+### `PhysicsSetLinearDamping(ID: int, damping: float) -> None`
+
+改变物体线性阻尼。
+
+- `damping`：线性阻尼
+
+### `PhysicsGetAngularDamping(ID: int) -> float`
+
+读取物体角阻尼。
+
+- `returns`：角阻尼
+
+### `PhysicsSetAngularDamping(ID: int, damping: float) -> None`
+
+改变物体角阻尼。
+
+- `damping`：角阻尼
+
+### `PhysicsGetLinearVelocity(ID: int) -> vec3`
+
+读取物体线速度。
+
+- `returns`：线速度沿三轴的分量
+
+### `PhysicsSetLinearVelocity(ID: int, velocity: vec3) -> None`
+
+改变物体线速度。
+
+- `velocity`：线速度沿三轴的分量
+
+### `PhysicsGetAngularVelocity(ID: int) -> vec3`
+
+读取物体角速度。
+
+- `returns`：角速度沿三轴的分量
+
+### `PhysicsSetAngularVelocity(ID: int, velocity: vec3) -> None`
+
+改变物体角速度。
+
+- `velocity`：角速度沿三轴的分量
+
+### `PhysicsBreakJoint(ID: int) -> None`
+
+断开关节。
+
+### `PhysicsRaycast(origin: vec3, direction: vec3, length: float) -> list[tuple[int, float, float, float, float, float, float]]`
+
+从给定点向给定方向发出射线，不考虑遮挡，返回所有照射点的信息。
+
+- `origin`：射线原点
+- `direction`：射线方向
+- `length`：射线长度
+- `returns`：照射点信息
+  - `[*][0]`：照射到的元件 ID
+  - `[*][1:4]`：照射点坐标
+  - `[*][4:7]`：反射法线沿三轴的分量
+
+### `PhysicsMouseRaycast(length: float) -> list[tuple[int, float, float, float, float, float, float]]`
+
+从摄像机向鼠标指针方向发出射线，不考虑遮挡，返回所有照射点的信息。
+
+- `length`：射线长度
+- `returns`：照射点信息
+  - `[*][0]`：照射到的元件 ID
+  - `[*][1:4]`：照射点坐标
+  - `[*][4:7]`：反射法线沿三轴的分量
+
+### `PhysicsCheckDuringDestroy(ID: int) -> bool`
+
+用于判断物体是否处于触碰到死亡区后的缩小销毁流程中
+
+- `returns`：是否处于缩小销毁流程中

@@ -1,0 +1,120 @@
+---
+sidebar_position: 1
+---
+
+# Trigger
+
+:::tip
+
+Triggers need to be used together with [executors](./executor/README.mdx).
+
+:::
+
+## Universal Parameters
+
+### `Trigger Type`
+
+- Type: `Literal`
+- Default: `Physics`
+
+### `Activated`
+
+- Type: `bool`
+- Default: `true`
+
+The trigger takes effect only when activated. Executors can change the activation state of a trigger in game.
+
+### `Trigger Count`
+
+- Type: `int`
+- Default: `-1`
+- Constrain: `n: n >= -1`
+
+`-1` means unlimited count.
+
+### `Trigger CD`
+
+- Type: `float`
+- Default: `0`
+- Constrain: `t: t >= 0`
+
+`0` means no cool-down. Note that **the cool-down is reset even if the trigger fails**.
+
+### `Target Executor ID`
+
+- Type: `int[]`
+- Default: `[]`
+
+When the trigger takes effect, these executors start running in order.
+
+## Physics
+
+### `Physics Trigger Type`
+
+- Type: `Literal`
+- Default: `Enter`
+
+`Enter` takes effect when entering the trigger; `Stay` takes effect repeatedly every physics frame while staying in the trigger; `Exit` takes effect when leaving the trigger.
+
+### `Trigger Targets ID`
+
+- Type: `list[int]`
+- Default: `[]`
+
+Only objects in the list can activate the trigger.
+
+Numbers with special meanings:
+
+|  ID   |                 Object Type                  |
+| :---: | :------------------------------------------: |
+| `-1`  | All rigid bodies other than the player ball  |
+| `-2`  |               All rigid bodies               |
+| `-99` |             Current player ball              |
+| `-100` |             Player Wooden Ball              |
+| `-101` |             Player Stone Ball               |
+| `-102` |             Player Paper Ball               |
+| `-103` |              Player Ice Ball                |
+| `-104` |             Player Steel Ball               |
+| `-105` |             Player Rubber Ball              |
+| `-106` |             Player Glow Ball                |
+
+### `Send Object to Executor`
+
+- Type: `bool`
+- Default: `false`
+
+When checked, any object that activates the trigger will temporarily become the target ID of the associated executor (use `globals.TriggeredItemID` in code to get the ID).
+
+## Input
+
+### `Input Key`
+
+- Type: `Literal`
+- Default: `Space`
+
+### `Input Action`
+
+- Type: `Literal`
+- Default: `Down`
+
+`Down` takes effect when the key is pressed down; `Hold` takes effect repeatedly every physics frame while the key is being held; `Up` takes effect when the key is released; `Switch` starts taking effect repeatedly every physics frame when the key is pressed down for the first time, and stops when it's pressed down again.
+
+## Physics Frame
+
+The physics frame rate of Ballex is 100Hz, i.e. the associated executor runs once every 0.01 second.
+
+### Wait Frame
+
+- Type: `int`
+- Default: `0`
+- Constrain: `f: f >= 0`
+
+## Image Frame
+
+The associated executor runs once every frame, depending on the image frame rate in game (the FPS at the top-right corner).
+
+### Wait Frame
+
+- Type: `int`
+- Default: `0`
+- Constrain: `f: f >= 0`

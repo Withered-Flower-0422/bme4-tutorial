@@ -1,0 +1,19 @@
+.container {
+  text-align: center;
+}
+
+.title {
+  background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  background-clip: text;
+  color: transparent;
+  animation: title 6s linear infinite;
+
+  @keyframes title {
+    from {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+}

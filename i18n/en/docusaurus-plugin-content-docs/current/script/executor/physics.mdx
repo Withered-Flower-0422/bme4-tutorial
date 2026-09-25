@@ -1,0 +1,105 @@
+---
+sidebar_position: 2
+---
+
+# Physics
+
+## API
+
+### `PhysicsCheckExists(ID: int) -> bool`
+
+Check whether the specified physics object exists.
+
+- `returns`: whether it exists
+
+### `PhysicsGetMass(ID: int) -> float`
+
+Get mass of an object.
+
+- `returns`: mass
+
+### `PhysicsSetMass(ID: int, mass: float) -> None`
+
+Set mass of an object.
+
+- `mass`: mass
+
+### `PhysicsGetLinearDamping(ID: int) -> float`
+
+Get linear damping of an object.
+
+- `returns`: linear damping
+
+### `PhysicsSetLinearDamping(ID: int, damping: float) -> None`
+
+Set linear damping of an object.
+
+- `damping`: linear damping
+
+### `PhysicsGetAngularDamping(ID: int) -> float`
+
+Get angular damping of an object.
+
+- `returns`: angular damping
+
+### `PhysicsSetAngularDamping(ID: int, damping: float) -> None`
+
+Set angular damping of an object.
+
+- `damping`: angular damping
+
+### `PhysicsGetLinearVelocity(ID: int) -> vec3`
+
+Get linear velocity of an object.
+
+- `returns`: linear velocity along each axis
+
+### `PhysicsSetLinearVelocity(ID: int, velocity: vec3) -> None`
+
+Set linear velocity of an object.
+
+- `velocity`: linear velocity along each axis
+
+### `PhysicsGetAngularVelocity(ID: int) -> vec3`
+
+Get angular velocity of an object.
+
+- `returns`: angular velocity along each axis
+
+### `PhysicsSetAngularVelocity(ID: int, velocity: vec3) -> None`
+
+Set angular velocity of an object.
+
+- `velocity`: angular velocity along each axis
+
+### `PhysicsBreakJoint(ID: int) -> None`
+
+Break joint.
+
+### `PhysicsRaycast(origin: vec3, direction: vec3, length: float) -> list[tuple[int, float, float, float, float, float, float]]`
+
+Cast a ray from the given point towards the given direction, ignoring occlusion, and return information of all hit points.
+
+- `origin`: ray origin
+- `direction`: ray direction
+- `length`: ray length
+- `returns`: hit point information
+  - `[*][0]`: object ID hit
+  - `[*][1:4]`: hit point's coordinate
+  - `[*][4:7]`: reflection normal along each axis
+
+### `PhysicsMouseRaycast(length: float) -> list[tuple[int, float, float, float, float, float, float]]`
+
+Cast a ray from the camera towards the mouse pointer, ignoring occlusion, and return information of all hit points.
+
+- `length`: ray length
+- `returns`: hit point information
+  - `[*][0]`: object ID hit
+  - `[*][1:4]`: hit point's coordinate
+  - `[*][4:7]`: reflection normal along each axis
+
+### `PhysicsCheckDuringDestroy(ID: int) -> bool`
+
+Check whether an object is in the shrink-and-destroy process after touching a deathbox
+
+- `returns`: whether it is in the shrink-and-destroy process

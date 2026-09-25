@@ -1,0 +1,58 @@
+---
+sidebar_position: 3
+---
+
+# Game Flow
+
+## API
+
+### `CallSuicide() -> None`
+
+Return to the checkpoint.
+
+### `CallRestart() -> None`
+
+Restart the level.
+
+### `GetSection() -> int`
+
+Get the number of the section you're currently in.
+
+- `returns`: number of the section you're currently in
+
+### `SetSection(section: int) -> None`
+
+Set the number of the section you're currently in.
+
+- `section`: number of the section to set
+
+### `SpawnVfx(vfxType: Literal, position: vec3) -> bool`
+
+Spawn VFX.
+
+- `vfxType`: VFX type
+- `position`: VFX position
+- `returns`: whether it is spawned successfully
+
+### `SpawnVfxPRS(vfxType: string, position: vec3, rotation: vec3, scale: vec3) -> bool`
+
+Spawn VFX, with rotation and scale supported.
+
+- `vfxType`: VFX type
+- `position`: VFX position
+- `rotation`: VFX rotation, in euler angle format
+- `scale`: VFX scale
+- `returns`: whether it is spawned successfully
+
+VFX table:
+
+|      vfxType      |                Description                |
+| :---------------: | :---------------------------------------: |
+|    `StartLife`    |              Start life VFX               |
+|    `Explosion`    |             Explosion VFX                 |
+|      `Steam`      |               Steam VFX                   |
+| `SwitchBallPartA` |     First half of the ball switch VFX     |
+| `SwitchBallPartB` |    Second half of the ball switch VFX     |
+|   `CollectLife`   |             Collect life VFX              |
+|   `CollectCure`   |             Collect cure VFX              |
+|  `CollectScore`   |             Collect score VFX             |

@@ -1,0 +1,158 @@
+---
+sidebar_position: 2
+---
+
+# Meshes
+
+If the built-in objects can't meet your mapping needs, you can consider modeling them yourself.
+
+## Import Mesh
+
+- After modeling in 3D software, export the mesh as `.fbx` format
+- Select the `Assets → Meshes` category, click the first button on the bottom right, `Import Mesh`
+- In the dialog that pops up, select the exported `.fbx` file and click the `Open` button
+
+:::tip
+
+See: [`Start → Preparation → Coordinate System`](../../start/preparation.mdx#coordinate-system)
+
+For modeling softwares that don't support exporting `.fbx`, you can export the model in another format, import it into Blender, and then export it as `.fbx`.
+
+Confirmed usable softwares:
+
+- [Blender](https://www.blender.org/)
+
+:::
+
+## Use Mesh
+
+import { TitleBadge } from "@site/src/components/Badge"
+
+Meshes can be dragged directly into the scene for use.
+
+### `Mesh`
+
+- Type: `Mesh`
+- Default: empty
+
+The mesh **displayed** by this object.
+
+### `Materials`
+
+- Type: `list[Material.PBR]`
+- Default: `[]`
+
+The correspondence is consistent with the settings in the modeling software.
+
+### `Collider Type`
+
+- Type: `Literal`
+- Default: `Mesh`
+
+:::tip
+
+The performance of mesh mode is much lower than that of the other two modes. Box or sphere mode is preferred if the result meets your requirement.
+
+:::
+
+### `Weld Collider` <TitleBadge text="Physics Body Type = Static" />
+
+- Type: `bool`
+- Default: `false`
+
+Neighboring objects with this feature enabled will automatically optimize their colliders, trying to fix small problems such as thin gaps, misalignment and slight clipping.
+
+:::danger
+
+This feature may cause many physics-violating behaviors, including but not limited to bouncing, falling off a single rail and machinery clipping. DO NOT use it unless you know what you're doing.
+
+:::
+
+### `Offset`
+
+- Type: `float` `float` `float`
+- Default: `0` `0` `0`
+
+### `Size` <TitleBadge text="Collider Type = Box" />
+
+- Type: `float` `float` `float`
+- Default: `1` `1` `1`
+- Constrain: `x: x > 0` `y: y > 0` `z: z > 0`
+
+### `Rounded Radius` <TitleBadge text="Collider Type = Box" />
+
+- Type: `float`
+- Default: `0.02`
+- Constrain: `r: r >= 0`
+
+### `Radius` <TitleBadge text="Collider Type = Sphere" />
+
+- Type: `float`
+- Default: `0.5`
+- Constrain: `r: r > 0`
+
+### `Mesh Overwrite` <TitleBadge text="Collider Type = Mesh" />
+
+- Type: `Mesh`
+- Default: empty
+
+The mesh of the **collider** of this object. If not set, it will be the same as the displayed mesh.
+
+### `Physics Body Type`
+
+- Type: `Literal`
+- Default: `Static`
+
+The meanings of each type are:
+
+- `Static`: completely static. e.g. ground
+- `Kinematic`: static, and its posture can only be adjusted through [executor](../../script/executor/physics.mdx) / [way path](../../advanced/menu-create/way-path-point.mdx). e.g. moving road
+- `Rigid`: participates in the physics simulation and is affected by various forces. e.g. box
+- `Decorative`: only displays the appearance, with no collider
+- `Collider`: only has a collider, and is not displayed in the game. e.g. invisible road
+
+### `Mass` <TitleBadge text="Physics Body Type = Rigid" />
+
+- Type: `float`
+- Default: `1`
+- Constrain: `m: 0.001 <= m <= 10000`
+
+### `Density` <TitleBadge text="Physics Body Type = Rigid" />
+
+- Type: `float`
+- Default: `10`
+- Constrain: `ρ: 0.01 <= ρ <= 100`
+
+### `Linear Drag` <TitleBadge text="Physics Body Type = Rigid" />
+
+- Type: `float`
+- Default: `0.5`
+- Constrain: `ζ: 0.001 <= ζ <= 10000`
+
+### `Angular Drag` <TitleBadge text="Physics Body Type = Rigid" />
+
+- Type: `float`
+- Default: `0.05`
+- Constrain: `ζ: 0.001 <= ζ <= 10000`
+
+### `Gravity Factor` <TitleBadge text="Physics Body Type = Rigid" />
+
+- Type: `float`
+- Default: `1`
+- Constrain: `η: -10 <= η <= 10`
+
+1 means normal gravity, 0 means no gravity, and a negative number means anti-gravity.
+
+### `Physics Material`
+
+- Type: `Literal`
+- Default: `Stone`
+
+Affects physical properties such as elasticity and surface friction coefficient.
+
+### `Physics Audio Group`
+
+- Type: `Literal`
+- Default: `Stone`
+
+Affects game effects such as collision SFX.

@@ -1,0 +1,80 @@
+---
+sidebar_position: 9
+---
+
+import { TitleBadge } from "@site/src/components/Badge"
+
+# Way Path & Way Point
+
+A way path is used together with way points to control objects to move along a specified route.
+
+## Usage
+
+- Create one way path and multiple way points
+- Drag all way points into the way path's hierarchy to make them child objects of the way path
+- Click the `Get Way Points` button in the way path's `Inspector`, and the route formed by the way points can then be observed visually in the scene
+- Set the position, posture, size and other attributes of each way point in order; these attributes will affect the position, posture and size of the controlled objects
+
+## Way Path
+
+### `Use Curve`
+
+- Type: `bool`
+- Default: `false`
+
+After checking `Use Curve`, the route between two way points will be connected with a Bezier curve.
+
+### `Close Path`
+
+- Type: `bool`
+- Default: `false`
+
+After checking `Close Path`, the way path will be closed, i.e. the last way point will automatically connect to the first way point.
+
+### `Controlled Objects`
+
+- Type: `int[]`
+- Default: `[]`
+
+The list of IDs of the objects that need to be controlled by this way path.
+
+### `Loop Path`
+
+- Type: `bool`
+- Default: `false`
+
+After checking `Loop`, objects will move along this way path in a loop; otherwise, objects will finally stay at the last way point.
+
+:::danger
+
+For now, the only way to enable a way path is [controlling it through scripting](../../script/executor/way-path.mdx).
+
+:::
+
+## Way Point
+
+### `Move Speed`
+
+- Type: `float`
+- Default: `0`
+
+The speed at which the object moves from this way point to the next one.
+
+### `Use Move Duration`
+
+- Type: `bool`
+- Default: `false`
+
+### `Move Duration` <TitleBadge text="Use Move Duration = true" />
+
+- Type: `float`
+- Default: `0`
+
+The duration needed for the object to move from this way point to the next one.
+
+### `Stay Time`
+
+- Type: `float`
+- Default: `0`
+
+The time the object stays at this way point.

@@ -1,0 +1,382 @@
+---
+sidebar_position: 12
+---
+
+# UI
+
+## 游戏界面 UI 相关 API
+
+### `UIHideGameUI() -> None`
+
+隐藏游戏默认 UI。
+
+### `UIShowGameUI() -> None`
+
+显示游戏默认 UI。
+
+## 通用 API
+
+### `UIGetCanvasSize() -> vec2`
+
+获取当前游戏画面大小。（基准：`1920×1080`）
+
+- `returns`：当前游戏画面的宽度和高度
+
+### `UICreate(elementType: Literal["Panel", "Text", "Image"]) -> int`
+
+创建一个 UI 元素。
+
+- `elementType`：UI 元素的类型
+  - `"Panel"`：面板，用于布局和组织其他 UI 元素，相当于文件夹
+  - `"Text"`：文本
+  - `"Image"`：图片
+- `returns`：创建的 UI 元素的 ID
+
+### `UIDestroy(ID: int) -> bool`
+
+销毁一个 UI 元素。
+
+- `returns`：销毁是否成功
+
+---
+
+### `UISetPosition(ID: int, x: float, y: float) -> None`
+
+设置 UI 元素的位置。
+
+- `x`：X 轴位置
+- `y`：Y 轴位置
+
+### `UIGetPosition(ID: int) -> vec2`
+
+获取 UI 元素的位置。
+
+- `returns`：UI 元素的 X、Y 位置
+
+### `UISetSize(ID: int, width: float, height: float) -> None`
+
+设置 UI 元素的尺寸。
+
+- `width`：UI 元素的宽度
+- `height`：UI 元素的高度
+
+### `UIGetSize(ID: int) -> vec2`
+
+获取 UI 元素的尺寸。
+
+- `returns`：UI 元素的宽度和高度
+
+### `UISetScale(ID: int, x: float, y: float) -> None`
+
+设置 UI 元素的缩放比例。
+
+- `x`：X 轴缩放比例
+- `y`：Y 轴缩放比例
+
+### `UIGetScale(ID: int) -> vec2`
+
+获取 UI 元素的缩放比例。
+
+- `returns`：UI 元素在 X、Y 轴上的缩放比例
+
+### `UISetRotation(ID: int, degrees: float) -> None`
+
+设置 UI 元素的旋转角度。
+
+- `degrees`：旋转角度，范围为 `r: 0 <= r < 360`
+
+### `UIGetRotation(ID: int) -> float`
+
+获取 UI 元素的旋转角度。
+
+- `returns`：当前旋转角度，范围为 `r: 0 <= r < 360`
+
+### `UISetAnchorMin(ID: int, x: float, y: float) -> None`
+
+设置 UI 元素的最小锚点。
+
+- `x`：锚点在 X 轴上的位置
+- `y`：锚点在 Y 轴上的位置
+
+### `UIGetAnchorMin(ID: int) -> vec2`
+
+获取 UI 元素的最小锚点。
+
+- `returns`：最小锚点的 X、Y 坐标
+
+### `UISetAnchorMax(ID: int, x: float, y: float) -> None`
+
+设置 UI 元素的最大锚点。
+
+- `x`：锚点在 X 轴上的位置
+- `y`：锚点在 Y 轴上的位置
+
+### `UIGetAnchorMax(ID: int) -> vec2`
+
+获取 UI 元素的最大锚点。
+
+- `returns`：最大锚点的 X、Y 坐标
+
+### `UISetPivot(ID: int, x: float, y: float) -> None`
+
+设置 UI 元素的轴心点。
+
+- `x`：轴心点在 X 轴上的位置
+- `y`：轴心点在 Y 轴上的位置
+
+### `UIGetPivot(ID: int) -> vec2`
+
+获取 UI 元素的轴心点。
+
+- `returns`：轴心点的 X、Y 坐标
+
+### `UISetEnabled(ID: int, enabled: bool) -> None`
+
+设置 UI 元素是否启用。
+
+- `enabled`：是否启用 UI 元素
+
+### `UIGetEnabled(ID: int) -> bool`
+
+获取 UI 元素是否启用。
+
+- `returns`：UI 元素是否处于启用状态
+
+### `UISetParent(ID: int, parentID: int) -> None`
+
+设置 UI 元素的父元素。
+
+- `parentID`：父 UI 元素的 ID，`0` 表示无父元素
+
+### `UIGetParent(ID: int) -> int`
+
+获取 UI 元素的父元素。
+
+- `returns`：父 UI 元素的 ID，`0` 表示无父元素
+
+---
+
+### `UISetColor(ID: int, r: float, g: float, b: float, a: float) -> None`
+
+设置 UI 元素的颜色。
+
+- `r`：红色通道，`0 <= r <= 1`
+- `g`：绿色通道，`0 <= g <= 1`
+- `b`：蓝色通道，`0 <= b <= 1`
+- `a`：不透明度通道，`0 <= a <= 1`
+  - `0`：完全透明
+  - `1`：完全不透明
+
+### `UIGetColor(ID: int) -> vec4`
+
+获取 UI 元素的颜色。
+
+- `returns`：包含 `r`、`g`、`b`、`a` 四个颜色通道的颜色值，均在 `[0, 1]` 范围内。
+
+### `UISetAlpha(ID: int, alpha: float) -> None`
+
+设置 UI 元素的不透明度。
+
+- `alpha`：不透明度
+
+### `UIGetAlpha(ID: int) -> float`
+
+获取 UI 元素的不透明度。
+
+- `returns`：当前不透明度
+
+### `UISetMask(ID: int, enabled: bool) -> None`
+
+设置 UI 元素是否启用遮罩。
+
+- `enabled`：是否启用遮罩
+
+### `UIGetMask(ID: int) -> bool`
+
+获取 UI 元素是否启用遮罩。
+
+- `returns`：是否启用遮罩
+
+### `UISetMaskable(ID: int, maskable: bool) -> None`
+
+设置 UI 元素是否可以被父级遮罩裁剪。
+
+- `maskable`：是否允许该元素被遮罩
+
+### `UIGetMaskable(ID: int) -> bool`
+
+获取 UI 元素是否可以被遮罩。
+
+- `returns`：是否允许该元素被遮罩
+
+### `UISetShowMaskGraphic(ID: int, show: bool) -> None`
+
+设置启用遮罩时是否显示遮罩图形本身。
+
+- `show`：是否显示遮罩图形
+
+### `UIGetShowMaskGraphic(ID: int) -> bool`
+
+获取启用遮罩时是否显示遮罩图形本身。
+
+- `returns`：是否显示遮罩图形
+
+### `UISetRaycastTarget(ID: int, enabled: bool) -> None`
+
+设置 UI 元素是否作为射线检测目标。
+
+- `enabled`：是否启用射线检测目标
+
+### `UIGetRaycastTarget(ID: int) -> bool`
+
+获取 UI 元素是否作为射线检测目标。
+
+- `returns`：是否启用射线检测目标
+
+### `UISetRaycastEvent(ID: int, enabled: bool) -> None`
+
+设置 UI 元素是否启用射线事件。
+
+启用后，可以通过 `UIGetClicked()` 轮询该元素是否被点击。
+
+- `enabled`：是否启用射线事件
+
+### `UIGetRaycastEvent(ID: int) -> bool`
+
+获取 UI 元素是否启用了射线事件。
+
+- `returns`：是否启用射线事件
+
+### `UIGetClicked(ID: int) -> bool`
+
+获取 UI 元素是否被点击。
+
+该接口采用闩锁式机制：元素被点击后状态会被置位，调用该接口读取状态后会自动清除。
+
+- `returns`：是否检测到点击事件
+
+## 文本 UI 相关 API
+
+### `UISetText(ID: int, text: str) -> None`
+
+设置文本 UI 元素的文本内容。
+
+- `text`：要显示的文本内容
+
+### `UIGetText(ID: int) -> str`
+
+获取文本 UI 元素的文本内容。
+
+- `returns`：当前文本内容
+
+### `UISetFontSize(ID: int, size: float) -> None`
+
+设置文本 UI 元素的字体大小。
+
+- `size`：字体大小
+
+### `UIGetFontSize(ID: int) -> float`
+
+获取文本 UI 元素的字体大小。
+
+- `returns`：当前字体大小
+
+### `UISetTextAlignH(ID: int, align: Literal["Left", "Center", "Right"]) -> None`
+
+设置文本的水平对齐方式。
+
+- `align`：水平对齐方式
+  - `"Left"`：左对齐
+  - `"Center"`：居中
+  - `"Right"`：右对齐
+
+### `UIGetTextAlignH(ID: int) -> Literal["Left", "Center", "Right"]`
+
+获取文本的水平对齐方式。
+
+- `returns`：当前水平对齐方式
+
+### `UISetTextAlignV(ID: int, align: Literal["Top", "Middle", "Bottom"]) -> None`
+
+设置文本的垂直对齐方式。
+
+- `align`：垂直对齐方式
+  - `"Top"`：顶部对齐
+  - `"Middle"`：垂直居中
+  - `"Bottom"`：底部对齐
+
+### `UIGetTextAlignV(ID: int) -> Literal["Top", "Middle", "Bottom"]`
+
+获取文本的垂直对齐方式。
+
+- `returns`：当前垂直对齐方式
+
+### `UISetTextWrapping(ID: int, wrapping: bool) -> None`
+
+设置文本是否自动换行。
+
+- `wrapping`：是否启用文本自动换行
+
+### `UIGetTextWrapping(ID: int) -> bool`
+
+获取文本是否启用自动换行。
+
+- `returns`：是否启用文本自动换行
+
+## 图片 UI 相关 API
+
+### `UISetTexture(ID: int, path: str) -> None`
+
+设置图片 UI 元素的纹理。
+
+- `path`：纹理资源路径，设为空字符串时使用白色占位图
+
+### `UIGetTexture(ID: int) -> str`
+
+获取图片 UI 元素当前使用的纹理路径。
+
+- `returns`：当前纹理资源路径
+
+### `UISetUVRect(ID: int, x: float, y: float, width: float, height: float) -> None`
+
+设置图片 UI 元素的 UV 区域。
+
+- `x`：UV 区域的 X 坐标
+- `y`：UV 区域的 Y 坐标
+- `width`：UV 区域的宽度
+- `height`：UV 区域的高度
+
+### `UIGetUVRect(ID: int) -> list`
+
+获取图片 UI 元素当前的 UV 区域。
+
+- `returns`：包含 `[x, y, width, height]` 的 UV 区域
+
+### `UISetAspectRatioMode(ID: int, mode: Literal["None", "WidthControlsHeight", "HeightControlsWidth", "FitInParent", "EnvelopeParent"]) -> None`
+
+设置 UI 元素的宽高比适配模式。
+
+- `mode`：宽高比适配模式
+  - `"None"`：不进行宽高比约束
+  - `"WidthControlsHeight"`：由宽度决定高度
+  - `"HeightControlsWidth"`：由高度决定宽度
+  - `"FitInParent"`：保持宽高比并完整适配到父元素内部
+  - `"EnvelopeParent"`：保持宽高比并覆盖父元素区域
+
+### `UIGetAspectRatioMode(ID: int) -> Literal["None", "WidthControlsHeight", "HeightControlsWidth", "FitInParent", "EnvelopeParent"]`
+
+获取 UI 元素当前的宽高比适配模式。
+
+- `returns`：当前宽高比适配模式
+
+### `UISetAspectRatio(ID: int, ratio: float) -> None`
+
+设置 UI 元素的宽高比。
+
+- `ratio`：宽高比，通常表示为 `width / height`
+
+### `UIGetAspectRatio(ID: int) -> float`
+
+获取 UI 元素当前的宽高比。
+
+- `returns`：当前宽高比

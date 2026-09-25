@@ -1,0 +1,29 @@
+---
+sidebar_position: 6
+---
+
+# Fog
+
+:::warning
+
+- The APIs are valid only when there's fog in the scene
+- Currently only the following scenes have fog
+  - Preset Scene16: Foggy Day
+  - Preset Scene17: Foggy Night
+
+:::
+
+## API
+
+### `SetFogDensity(density: float) -> None`
+
+Set fog density.
+
+- `density`: fog density
+
+### `SetFogDistance(near: float, far: float) -> None`
+
+Set the visibility of fog.
+
+- `near`: the distance where visibility begins to degrade
+- `far`: the distance where visibility reaches the worst

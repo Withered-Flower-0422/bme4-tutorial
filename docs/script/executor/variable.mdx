@@ -1,0 +1,165 @@
+---
+sidebar_position: 8
+---
+
+# 变量
+
+import { TitleBadge } from "../../../src/components/Badge"
+
+## API
+
+### `GetIntVariableValue(name: str) -> int`
+
+### `GetFloatVariableValue(name: str) -> float`
+
+### `GetBoolVariableValue(name: str) -> bool`
+
+### `GetNumberListVariableValue(name: str) -> list[float]`
+
+读取变量系统中变量的值。
+
+- `name`：变量名
+- `returns`：变量值
+
+### `SetIntVariableValue(name: str, value: int) -> None`
+
+### `SetFloatVariableValue(name: str, value: float) -> None`
+
+### `SetBoolVariableValue(name: str, value: bool) -> None`
+
+### `SetNumberListVariableValue(name: str, value: list[float]) -> None`
+
+写入变量系统中变量的值。
+
+- `name`：变量名
+- `value`：变量值
+
+## 新建变量
+
+见 [`进阶 → 菜单 → 创建 → 变量`](../../advanced/menu-create/variable.mdx)。
+
+## 内置变量
+
+### `G_Score`
+
+- 类型：`float`
+- 限制：`x: x >= 0`
+
+玩家当前得分。
+
+### `G_Time` <TitleBadge text="只读" />
+
+- 类型：`int`
+- 限制：`t: t >= 0`
+
+当前用时。单位为物理帧 (5ms)。
+
+### `G_Durability`
+
+- 类型：`float`
+- 限制：`x: x >= 0`
+
+玩家球耐久值。（可突破 100）
+
+### `G_SecondaryDurability`
+
+- 类型：`float`
+- 限制：`x: x >= 0`
+
+第二耐久值（湿度值）。
+
+### `G_Life`
+
+- 类型：`float`
+- 限制：`x: 0 <= x <= 10`
+
+生命数量。
+
+### `G_Temperature`
+
+- 类型：`float`
+
+玩家球温度值。
+
+### `G_Power`
+
+- 类型：`float`
+- 限制：`x: 0 <= x <= 100`
+
+玩家球电量值。
+
+### `G_Scale`
+
+- 类型：`float`
+- 限制：`x: 0.2 <= r <= 2`
+
+玩家球半径倍数。
+
+### `G_CameraDirection` <TitleBadge text="只读" />
+
+- 类型：`Literal[0, 1, 2, 3]`
+
+当前摄像机朝向。以世界坐标系为基准，`Z+` 方向为 `0`，`X+` 方向为 `1`，`Z-` 方向为 `2`，`X-` 方向为 `3`。
+
+### `G_PlayerVelocity` <TitleBadge text="只读" />
+
+- 类型：`float`
+- 限制：`v: v >= 0`
+
+玩家球速度。
+
+### `G_PlayerPositionX` `G_PlayerPositionY` `G_PlayerPositionZ` <TitleBadge text="只读" />
+
+- 类型：`float` `float` `float`
+
+玩家球坐标。
+
+### `G_CurrentBallType`
+
+- 类型：`Literal`
+
+玩家球球种。
+
+编号与球种的对应关系一览：
+
+|  编号  |  球种  |
+| :----: | :----: |
+| `-100` |  木球  |
+| `-101` |  石球  |
+| `-102` |  纸球  |
+| `-103` |  冰球  |
+| `-104` |  钢球  |
+| `-105` | 橡胶球 |
+| `-106` | 发光球 |
+
+### `G_IsSwitching`
+
+- 类型：`bool`
+
+玩家球是否正在变球或增球流程中。
+
+### `G_Key`
+
+- 类型：`int`
+- 限制：`n: 0 <= n <= 5`
+
+钥匙数量。
+
+### `G_Section`
+
+- 类型：`int`
+- 限制：`n: 0 <= n < 100`
+
+当前所处小节数。
+
+### `G_IsTestingMap` <TitleBadge text="只读" />
+
+- 类型：`bool`
+
+当前是否处于测图模式。
+
+### `G_IsTimerEnabled` <TitleBadge text="只读" />
+
+- 类型：`bool`
+
+当前计时器是否运行中。

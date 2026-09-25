@@ -1,0 +1,165 @@
+---
+sidebar_position: 8
+---
+
+# Variable
+
+import { TitleBadge } from "@site/src/components/Badge"
+
+## API
+
+### `GetIntVariableValue(name: str) -> int`
+
+### `GetFloatVariableValue(name: str) -> float`
+
+### `GetBoolVariableValue(name: str) -> bool`
+
+### `GetNumberListVariableValue(name: str) -> list[float]`
+
+Read the value of a variable in the variable system.
+
+- `name`: variable name
+- `returns`: variable value
+
+### `SetIntVariableValue(name: str, value: int) -> None`
+
+### `SetFloatVariableValue(name: str, value: float) -> None`
+
+### `SetBoolVariableValue(name: str, value: bool) -> None`
+
+### `SetNumberListVariableValue(name: str, value: list[float]) -> None`
+
+Write the value of a variable in the variable system.
+
+- `name`: variable name
+- `value`: variable value
+
+## Create Variables
+
+See [`Advanced → Menu → Create → Variable`](../../advanced/menu-create/variable.mdx).
+
+## Built-in Variables
+
+### `G_Score`
+
+- Type: `float`
+- Constrain: `x: x >= 0`
+
+Current score of the player.
+
+### `G_Time` <TitleBadge text="Read-only" />
+
+- Type: `int`
+- Constrain: `t: t >= 0`
+
+Current elapsed time. The unit is physics frame (5ms).
+
+### `G_Durability`
+
+- Type: `float`
+- Constrain: `x: x >= 0`
+
+Durability of the player ball. (Can exceed 100)
+
+### `G_SecondaryDurability`
+
+- Type: `float`
+- Constrain: `x: x >= 0`
+
+Secondary durability (humidity).
+
+### `G_Life`
+
+- Type: `float`
+- Constrain: `x: 0 <= x <= 10`
+
+Number of lives.
+
+### `G_Temperature`
+
+- Type: `float`
+
+Temperature of the player ball.
+
+### `G_Power`
+
+- Type: `float`
+- Constrain: `x: 0 <= x <= 100`
+
+Power of the player ball.
+
+### `G_Scale`
+
+- Type: `float`
+- Constrain: `x: 0.2 <= r <= 2`
+
+Radius multiplier of the player ball.
+
+### `G_CameraDirection` <TitleBadge text="Read-only" />
+
+- Type: `Literal[0, 1, 2, 3]`
+
+Current direction of the camera. Using global reference frame, `0` means direction `Z+`, `1` means direction `X+`, `2` means direction `Z-`, and `3` means direction `X-`.
+
+### `G_PlayerVelocity` <TitleBadge text="Read-only" />
+
+- Type: `float`
+- Constrain: `v: v >= 0`
+
+Velocity of the player ball.
+
+### `G_PlayerPositionX` `G_PlayerPositionY` `G_PlayerPositionZ` <TitleBadge text="Read-only" />
+
+- Type: `float` `float` `float`
+
+Coordinates of the player ball.
+
+### `G_CurrentBallType`
+
+- Type: `Literal`
+
+Ball type of the player ball.
+
+Mapping from ID to ball type:
+
+|  ID   | Ball Type  |
+| :----: | :----: |
+| `-100` |  Wooden Ball  |
+| `-101` |  Stone Ball   |
+| `-102` |  Paper Ball   |
+| `-103` |  Ice Ball     |
+| `-104` |  Steel Ball   |
+| `-105` | Rubber Ball |
+| `-106` | Glow Ball |
+
+### `G_IsSwitching`
+
+- Type: `bool`
+
+Whether the player ball is in the process of ball switching or appending.
+
+### `G_Key`
+
+- Type: `int`
+- Constrain: `n: 0 <= n <= 5`
+
+Number of keys.
+
+### `G_Section`
+
+- Type: `int`
+- Constrain: `n: 0 <= n < 100`
+
+Current section number.
+
+### `G_IsTestingMap` <TitleBadge text="Read-only" />
+
+- Type: `bool`
+
+Whether the current mode is test map.
+
+### `G_IsTimerEnabled` <TitleBadge text="Read-only" />
+
+- Type: `bool`
+
+Whether the timer is currently running.

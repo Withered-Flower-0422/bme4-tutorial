@@ -1,0 +1,58 @@
+---
+sidebar_position: 3
+---
+
+# 游戏流程
+
+## API
+
+### `CallSuicide() -> None`
+
+返回检查点。
+
+### `CallRestart() -> None`
+
+重开关卡。
+
+### `GetSection() -> int`
+
+读取当前所处的小节数。
+
+- `returns`：当前所处小节数
+
+### `SetSection(section: int) -> None`
+
+设置当前所处的小节数。
+
+- `section`：所要设置的小节数
+
+### `SpawnVfx(vfxType: Literal, position: vec3) -> bool`
+
+生成特效。
+
+- `vfxType`：特效类型
+- `position`：特效位置
+- `returns`：是否成功生成
+
+### `SpawnVfxPRS(vfxType: string, position: vec3, rotation: vec3, scale: vec3) -> bool`
+
+生成特效，支持旋转和缩放。
+
+- `vfxType`：特效类型
+- `position`：特效位置
+- `rotation`：特效旋转，格式为欧拉角
+- `scale`：特效缩放
+- `returns`：是否成功生成
+
+特效表一览：
+
+|      vfxType      |       描述       |
+| :---------------: | :--------------: |
+|    `StartLife`    |   生命开始特效   |
+|    `Explosion`    |     爆炸特效     |
+|      `Steam`      |     蒸汽特效     |
+| `SwitchBallPartA` | 变球特效前半部分 |
+| `SwitchBallPartB` | 变球特效后半部分 |
+|   `CollectLife`   |   收集生命特效   |
+|   `CollectCure`   |   收集治疗特效   |
+|  `CollectScore`   |   收集分数特效   |

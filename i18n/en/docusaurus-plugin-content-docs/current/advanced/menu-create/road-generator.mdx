@@ -1,0 +1,30 @@
+---
+sidebar_position: 5
+---
+
+# Road Generator
+
+- The Start chapter has introduced the [common basic operations](../../start/road-generator.mdx) of road generators
+- This chapter only covers road generators with a `Custom Shape`
+
+## Custom Shape Road
+
+The most important parameter of a `Custom Shape` road is `Custom Shape`. Only the function of `Custom Shape` is introduced here; the other parameters work the same as those of other road generators.
+
+### `Custom Shape`
+
+#### `Count`
+
+Determines how many road segments there are. Each group corresponds to one road segment.
+
+#### `Vertex`
+
+- Determines which vertices form the cross section of this road segment. You can set the number of vertices and the coordinate of each vertex yourself.
+- The coordinate is a relative position, and the reference plane is the `xy plane with the object's position as origin`
+- In the editor you can set `X` `Y` `Z` coordinates, **but actually only `X` and `Y` are effective**, representing the coordinate in the above reference plane
+
+:::tip
+
+- Different road segments can be set with different materials
+
+:::

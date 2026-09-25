@@ -1,0 +1,130 @@
+---
+sidebar_position: 5
+---
+
+# Release
+
+## Prepare a Cover
+
+### Take a Screenshot
+
+- Enter test map mode: `File → Export BMSX → Test Map` / `File → Test Map` / `F9`
+- Enter the screenshot function: `Ctrl + C`
+  - Drag the sliders at the bottom of the screen to adjust the view
+  - `Take Photo` to finish the screenshot
+- Screenshots are saved at `%USERPROFILE%\AppData\LocalLow\Mushreb\Ballex\Screenshots\`
+
+### Do It Yourself
+
+You can also make a cover yourself, with the following requirements:
+
+- `.png` or `.jpg` format
+- 16:9 aspect ratio, 1920×1080 recommended
+- It fits the theme of the map
+
+## Import Cover
+
+In the `Assets → Textures` panel, click the plus sign in the right column to import the cover.
+
+:::warning
+
+Imported images can't be exported again. Keep the source files yourself if necessary.
+
+:::
+
+## Export `.bmsx` File
+
+`File → Export BMSX`
+
+### `Author Name`
+
+- Type: `str`
+- Default: Steam nickname
+
+### `Author Steam ID`
+
+- Type: `const int`
+
+### `Level Name`
+
+- Type: `str`
+- Default: empty
+
+### `Level Description`
+
+- Type: `str`
+- Default: empty
+
+### `Initial Ball Type`
+
+- Type: `Literal`
+- Default: `Wooden Ball`
+
+### `Difficulty`
+
+- Type: `int`
+- Default: `0`
+- Constrain: `x: 0 <= x <= 10`
+
+### `Version`
+
+- Type: `int` `int` `int`
+- Default: `0` `0` `0`
+
+### `Cover`
+
+- Type: `Texture`
+- Default: empty
+
+Drag an image from the `Assets → Textures` panel and drop it here.
+
+## Upload to Steam Workshop
+
+`File → Upload to Workshop`
+
+### `Upload Mode`
+
+- Type: `Literal`
+- Default: `Create`
+
+Select `Create` here.
+
+### `Title`
+
+- Type: `str`
+- Default: empty
+
+### `Description`
+
+- Type: `str`
+- Default: empty
+
+### `Cover`
+
+- Type: `Texture`
+- Default: empty
+
+Drag an image from the `Assets → Textures` panel and drop it here.
+
+## Update Map
+
+`File → Upload to Workshop`
+
+### `Upload Mode`
+
+- Type: `Literal`
+- Default: `Create`
+
+Select `Update` here.
+
+### `Workshop File ID`
+
+- Type: `int`
+- Default: empty
+
+Find your map on the workshop website, click share, and the number after `id=` in the link is the file ID.
+
+### `Change Note`
+
+- Type: `str`
+- Default: empty

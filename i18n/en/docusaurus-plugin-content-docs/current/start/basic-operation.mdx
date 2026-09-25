@@ -1,0 +1,219 @@
+---
+sidebar_position: 2
+---
+
+# Basic Operation
+
+## Set Level Info
+
+`File → Export BMSX`
+
+Please set `Initial Ball Type` at least, then click `Apply` to save. You can fill in the other fields as well if you've planned them.
+
+## Set Skybox
+
+- If there's no skybox, create one at `Create → Skybox`
+- `BME3 Background` only affects the background displayed in the editor's scene. When enabled, the background in the editor scene will be displayed as the background used in BME3
+- The in-game background is controlled by `Skybox Type` and `Scene Type`
+  - When `Skybox Type` is `Preset`, you can choose among 23 preset scenes in `Scene Type`
+  - When `Skybox Type` is `Custom`, you can add background textures in `Front` `Back` `Left` `Right` `Top` `Bottom` yourself, adjust environment parameters, and use a `Custom BGM`
+
+List of preset scenes:
+
+|  #  |  Scene Type   |           Scene Feature           |
+| :-: | :-----------: | :-------------------------------: |
+|  1  |   Clear Day   |                 -                 |
+|  2  | Overcast Day  |                 -                 |
+|  3  | Light Rain Day | Paper ball continuously loses durability |
+|  4  | Thunderstorm Day |                 -                 |
+|  5  |   Snowy Day   |                 -                 |
+|  6  |  Clear Night  |                 -                 |
+|  7  | Overcast Night |                 -                 |
+|  8  | Light Rain Night | Paper ball continuously loses durability |
+|  9  | Thunderstorm Night |                 -                 |
+|  10 |  Snowy Night  |                 -                 |
+|  11 |  Above Earth  |            Low gravity            |
+|  12 |     Space     |            No gravity             |
+|  13 |     Dawn      |                 -                 |
+|  14 |     Dusk      |                 -                 |
+|  15 |     Abyss     |         High temperature          |
+|  16 |   Foggy Day   | Low view distance, no bird's-eye view |
+|  17 |  Foggy Night  | Low view distance, no bird's-eye view |
+|  18 |   Midnight    |                 -                 |
+|  19 |    Dawn 2     |                 -                 |
+|  20 |     Day 2     |                 -                 |
+|  21 |    Dusk 2     |                 -                 |
+|  22 |    Night 2    |                 -                 |
+|  23 | Above Earth 2 |           Half gravity            |
+
+## Save
+
+`File → Save Scene` / `Ctrl + S`
+
+Saved maps will appear in the `Assets → Scenes` panel and can be double-clicked to open.
+
+:::tip
+
+The map is actually saved at: `%USERPROFILE%\AppData\LocalLow\Mushreb\BME4\Assets\Scenes\`
+
+:::
+
+## Add Objects
+
+Find the needed object in the `Assets → Items` panel and drag it into the `Scene` window to add it.
+You'll see it at the end of the list in the `Hierarchy` window, and you can adjust its position, posture, scale and other provided parameters in the `Inspector` window.
+
+## Undo
+
+`Edit → Undo` / `Ctrl + Z`, also #1 button of the toolbar at the top-right corner.
+
+Don't rely too much on undo, and make a backup before making destructive changes.
+
+## Redo
+
+`Edit → Redo` / `Ctrl + Y`, also #2 button of the toolbar at the top-right corner.
+
+## Adjust View
+
+### Translation
+
+Hold `MouseMiddle` or `MouseRight` and drag.
+
+### Rotation
+
+Hold `Alt + MouseLeft` and drag.
+
+### Zoom
+
+Use `MouseScroll`.
+
+### Travel
+
+Hold `Alt + MouseRight` to enter travel mode. Drag to change the orientation of the camera; hold `W` to go forward, `S` backward, `A` left, `D` right, `Q` down and `E` up.
+
+### Focus
+
+`F`
+
+The view will automatically change to focus on the selected object, and set the current position as the center of view adjustments.
+
+:::tip
+
+All view adjustment operations depend on the center of view adjustments. If you have trouble adjusting the view, try using focus to change the center of view adjustments.
+
+:::
+
+### Three Views
+
+Click the arrows of the coordinate axis at the top-right corner.
+
+### Toggle Perspective / Orthogonal View
+
+The current view (`Persp` / `Ortho`) is shown below the coordinate axis at the top-right corner, and can be clicked to toggle. Orthogonal view is very useful when fine-tuning layouts.
+
+## Adjusting Objects
+
+### Spectator Mode
+
+`Q`, also #3 button of the toolbar at the top-right corner.
+
+In this mode you can't select or make any change to objects.
+
+### Moving Mode
+
+`W`, also #4 button of the toolbar at the top-right corner.
+
+Drag the three axis arrows to move the object in those directions, or drag the plane symbols to move it in those planes.
+
+### Rotation Mode
+
+`E`, also #5 button of the toolbar at the top-right corner.
+
+Drag the three colored arcs to rotate the object in the corresponding planes, or drag the big white circle to rotate it in the projection plane, or drag the circular surface to rotate it freely.
+
+### Scaling Mode
+
+`R`, also #6 button of the toolbar at the top-right corner.
+
+Drag the three handles to scale the object in those directions. You can drag to the negative semi-axis, in which case the object will become a mirror of itself.
+
+:::warning
+
+For fixed objects, there's no need to scale them in most cases; for machinery, most of them behave unexpectedly once scaled. So don't scale an object when there's another way.
+
+:::
+
+### Ruler Mode
+
+`T`, also #7 button of the toolbar at the top-right corner.
+
+Drag the handles at the corners of the rectangle to scale the object, and the current size will be shown in real time. [Rotate your view](#rotation) to switch to another plane to operate.
+
+### Quantization
+
+`Ctrl` / `Shift`, hold to enable and release to disable.
+
+When quantization is enabled, you can move in units of 0.5, rotate in units of 15°, scale by 50% relative to the current size, and align the ruler in units of 0.5.
+
+## Multi-select
+
+In the `Scene` window: hold `Shift` and select objects one by one, or hold `MouseLeft` and box-select.
+In the `Hierarchy` window: use the common multi-select methods with `Ctrl` `Shift`.
+
+:::tip
+
+When multi-selecting in the `Scene` window, an object is regarded as selected as long as **any part** of its collider enters the box.
+
+To avoid selecting unneeded objects as much as possible, it's recommended to operate from an [overlook](#three-views) view.
+
+:::
+
+## Duplicate Objects
+
+`Edit → Duplicate` / `Ctrl + D`
+
+A new object is created at the same position and appears at the end of the list in the `Hierarchy` window.
+
+## Delete Objects
+
+`Edit → Delete` / `Delete`
+
+## Create Starting Point, Check Point and Destination
+
+`Assets → Items → CheckPoint`
+
+Check points don't distinguish with each other and can be activated multiple times. You will always be reborn from the last activated check point.
+
+You complete the level upon entering the destination; you don't need to activate all check points.
+
+## Test Map
+
+`File → Export BMSX → Test Map` / `File → Test Map` / `F9`
+
+Ballex will launch automatically if you've [set the Ballex path](./preparation.mdx#set-ballex-path) correctly.
+
+:::tip
+
+The destination can't be activated in test map mode.
+
+:::
+
+### Teleport to Next Section
+
+`Ctrl + P`
+
+Instantly teleport to the checkpoint of the next section (except the destination).
+If you're already in the last section, nothing happens.
+
+### Fly
+
+`Ctrl + G`
+
+When activated, the player ball is not affected by gravity, and you can `Ascend` / `Descend` with `W` / `S`.
+Press it again to cancel fly mode.
+
+### Screenshot
+
+`Ctrl + C`
+
+The screenshot is a `.jpg` file with a resolution of `1920×1080`, saved at `%USERPROFILE%\AppData\LocalLow\Mushreb\Ballex\Screenshots\`.

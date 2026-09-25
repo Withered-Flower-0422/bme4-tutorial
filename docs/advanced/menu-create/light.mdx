@@ -1,0 +1,53 @@
+---
+sidebar_position: 2
+---
+
+import { TitleBadge } from "../../../src/components/Badge"
+
+# 光源
+
+## 参数
+
+### `光源类型`
+
+- 类型：`Literal`
+- 默认值：`点光`
+  - `点光`：普通点光源
+  - `平行光`：用于模拟太阳光
+  - `聚光`：类似手电筒发出的锥形光
+
+### `范围` <TitleBadge text="光源类型 = 点光" />
+
+- 类型：`float`
+- 默认值：`5`
+
+### `聚光角` <TitleBadge text="光源类型 = 聚光" />
+
+- 类型：`float` `float`
+- 默认值：`0` `0`
+
+### `颜色`
+
+- 类型：`float` `float` `float`
+- 默认值：`1` `1` `1`
+
+### `强度`
+
+- 类型：`float`
+- 默认值：`1`
+
+### `启用阴影`
+
+- 类型：`bool`
+- 默认值：`true`
+
+:::tip
+
+阴影计算开销较大，谨慎使用。
+
+:::
+
+### `阴影强度` <TitleBadge text="启用阴影 = true" />
+
+- 类型：`float`
+- 默认值：`1`

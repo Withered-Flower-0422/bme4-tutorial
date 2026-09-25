@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Start": {
+    "message": "Start",
+    "description": "The label for category 'Start' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Advanced": {
+    "message": "Advanced",
+    "description": "The label for category 'Advanced' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Assets Panel": {
+    "message": "Assets Panel",
+    "description": "The label for category 'Assets Panel' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Menu → Create": {
+    "message": "Menu → Create",
+    "description": "The label for category 'Menu → Create' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Scripting": {
+    "message": "Scripting",
+    "description": "The label for category 'Scripting' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Executor": {
+    "message": "Executor",
+    "description": "The label for category 'Executor' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Other": {
+    "message": "Other",
+    "description": "The label for category 'Other' in sidebar 'tutorialSidebar'"
+  }
+}

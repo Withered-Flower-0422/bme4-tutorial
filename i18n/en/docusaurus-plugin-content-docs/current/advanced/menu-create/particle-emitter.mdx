@@ -1,0 +1,162 @@
+---
+sidebar_position: 14
+---
+
+import { TitleBadge } from "@site/src/components/Badge"
+
+# Particle Emitter
+
+## Parameter
+
+### `Auto Play`
+
+- Type: `bool`
+- Default: `true`
+
+### `Loop`
+
+- Type: `bool`
+- Default: `true`
+
+### `Duration`
+
+- Type: `float`
+- Default: `5`
+- Constrain: `t: t > 0`
+
+### `Spawn Rate`
+
+- Type: `float` `float`
+- Default: `10` `20`
+- Constrain: `x: x > 0` `y: y > 0`
+
+The emission time of the next particle is determined by a random value uniformly taken in this range; negative numbers are treated as `0`. The two numbers are order-independent, and being equal means fixed. Same below.
+
+### `Burst Count`
+
+- Type: `float` `float`
+- Default: `0` `0`
+
+At the start of each duration, burst particles will be shot out. The intensity of each burst particle is taken as a random value uniformly in this range; negative numbers are treated as `0`.
+
+### `Emitter Size`
+
+- Type: `float` `float` `float`
+- Default: `1` `1` `1`
+
+Particles will be generated randomly and uniformly in this area; `0` means the position on that axis is fixed, and a negative number means the opposite direction.
+
+### `Initial Speed`
+
+- Type: `float` `float`
+- Default: `0` `5`
+
+Each particle takes a random value uniformly in this range; a negative number means the opposite direction.
+
+### `Initial Rotation`
+
+- Type: `float` `float`
+- Default: `0` `0`
+
+Each particle takes a random value uniformly in this range; the unit is radian, and a positive number means clockwise.
+
+### `Angular Velocity`
+
+- Type: `float` `float`
+- Default: `0` `0`
+
+Each particle takes a random value uniformly in this range; a positive number means clockwise.
+
+### `Initial Size`
+
+- Type: `float` `float`
+- Default: `0.5` `1`
+- Constrain: `x: x >= 0` `y: y >= 0`
+
+Each particle takes a random value uniformly in this range; negative numbers are treated as `0`.
+
+### `Lifetime`
+
+- Type: `float` `float`
+- Default: `1` `2`
+- Constrain: `t1: t1 >= 0` `t2: t2 >= 0`
+
+Each particle takes a random value uniformly in this range; negative numbers are treated as `0`.
+
+### `Follow Camera`
+
+- Type: `bool`
+- Default: `false`
+
+The particle emitter will move and rotate with the camera.
+
+### `Follow Position Offset` <TitleBadge text="Follow Camera = true"/>
+
+- Type: `float` `float` `float`
+- Default: `0` `0` `0`
+
+### `Material`
+
+- Type: `Material.Particle`
+- Default: empty
+
+### `Color over Lifetime`
+
+- Type: `list[vec4]`
+- Default: `[(1, 1, 1, 1), (1, 0, 0, 0.5), (0, 0, 1, 1)]`
+- Constrain: `(r, g, b, τ): 0 <= r <= 1 and 0 <= g <= 1 and 0 <= b <= 1 and 0 <= τ <= 1`
+
+`X` `Y` `Z` correspond to the RGB color; negative numbers are treated as `0`, and numbers greater than 1 are treated as `1`.
+
+`W` represents the keyframe time, following the rules below:
+
+- The start of a particle's lifetime is `τ = 0`, and the end is `τ = 1`
+- Negative numbers are treated as `0`, and numbers greater than 1 are treated as `1`
+- When multiple keyframes have the same time (including the out-of-range keyframes above), only the first declared keyframe is effective
+- If there's no keyframe at the start, the parameter value of the earliest keyframe is used
+- If there's no keyframe at the end, the parameter value of the latest keyframe is used
+- Between two adjacent keyframes, each parameter changes linearly
+
+### `Alpha over Lifetime`
+
+- Type: `list[vec2]`
+- Default: `[(0, 0), (1, 0.2), (1, 0.7), (0, 1)]`
+- Constrain: `(α, τ) : 0 <= α <= 1 and 0 <= τ <= 1`
+
+`X` represents the alpha; negative numbers are treated as `0`, and numbers greater than 1 are treated as `1`.
+
+`Y` represents the keyframe time, with the same rules as above.
+
+### `Size over Lifetime`
+
+- Type: `list[vec2]`
+- Default: `[(0.3, 0), (1, 1)]`
+- Constrain: `(s, τ): s >= 0 and 0 <= τ <= 1`
+
+`X` represents the ratio relative to the particle's `Initial Size`; negative numbers are treated as `0`.
+
+`Y` represents the keyframe time, with the same rules as above.
+
+### `Gravity Factor`
+
+- Type: `float`
+- Default: `0`
+
+### `Turbulence Intensity`
+
+- Type: `float`
+- Default: `1`
+
+### `Turbulence Frequency`
+
+- Type: `float`
+- Default: `0.2`
+- Constrain: `f: f > 0`
+
+### `Animation Tiles X` `Animation Tiles Y`
+
+- Type: `int` `int`
+- Default: `1` `1`
+- Constrain: `m: 0 < m <= 32` `n: 0 < n <= 32`
+
+Split the material image by the given number of tiles, and treat each tile as one frame to form a particle animation. The animation cycle is determined by the particle's `Duration`.

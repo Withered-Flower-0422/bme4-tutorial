@@ -1,0 +1,31 @@
+---
+sidebar_position: 9
+---
+
+# 音频
+
+## API
+
+### `PlayAudio(ID: int) -> bool`
+
+播放音频。
+
+- `returns`：是否成功播放
+
+### `PauseAudio(ID: int) -> bool`
+
+暂停音频，下次会从暂停的位置继续播放。
+
+- `returns`：是否成功暂停
+
+### `StopAudio(ID: int) -> bool`
+
+停止音频，下次会从头播放。
+
+- `returns`：是否成功停止
+
+### `SetAudioVolume(ID: int, volume: float) -> None`
+
+设置音频音量。
+
+- `volume`：音量，范围为 `0 <= v <= 1`

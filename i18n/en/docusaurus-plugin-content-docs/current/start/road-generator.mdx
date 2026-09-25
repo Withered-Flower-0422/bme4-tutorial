@@ -1,0 +1,109 @@
+---
+sidebar_position: 3
+---
+
+# Road Generator
+
+:::warning
+
+This chapter has a decisive impact on mapping quality and efficiency. Please read it carefully and practice more. Do not skip this chapter!
+
+:::
+
+All roads, rails, wooden boards and tubes in Ballex are made with road generators.
+
+## Create a Road Generator
+
+`Create → Road Generator`
+
+In the Start section, only common usages and frequently used parameters are introduced. The most crucial parameters are:
+
+import Badge from "@site/src/components/Badge"
+
+- `Generator Type`
+- `Length`
+- `End Height`
+- `Segments`
+- `Bend`
+- `Offsets` <Badge text="Steel Rail" backgroundColor="green" />
+
+:::tip
+
+The Start section won't cover roads with a [`Custom Shape`](../advanced/menu-create/road-generator.mdx#custom-shape).
+
+:::
+
+## Straight Road
+
+- Choose `Stone Road` as `Generator Type`
+- Set its `Length`
+- When making concave roads, set `Concave` (`0.1` recommended)
+- When making wide roads, set `Width` (`3` recommended)
+- When making sloped roads, set `End Height` and check `Precise UV Length`
+- When making adapters between different road types, uncheck `Link End Value` and adjust the parameters of the head and the end respectively
+
+:::tip
+
+`Length` means the length projected onto the horizontal plane, and is an independent parameter from `End Height`.
+
+If both ends are blocked by other objects, you can uncheck `Create Cap` to improve performance.
+
+:::
+
+## Straight Wooden Board
+
+- Choose `Wooden Board` as `Generator Type`
+- Set its `Length`
+- When making wide wooden boards, set `Width` (`2` recommended)
+- When making sloped wooden boards, set `End Height` and check `Precise UV Length`
+
+## Straight Rail
+
+- Choose `Steel Rail` as `Generator Type`
+- Set its `Length`
+- To change the gauge of the double rails, set `Offsets` (not recommended)
+- To make a single rail, set the number of `Offsets` to `1` and its value to `(0, 0)`
+- To make sloped rails, rotate the rail and append matching arc rails
+
+## Straight Tube
+
+- Choose `Tube` as `Generator Type`
+- Set its `Length`
+- To enlarge the outer diameter of the tube, set `Radius` (`0.75` recommended)
+- To change the central angle of the cross section, set `Slice Start Angle` and `Slice End Angle` (`0` `180` recommended)
+
+## Arc
+
+- Calculate the corresponding `Length` according to the desired radius and central angle
+- Set `Bend Y` to the angle between the end direction and the start direction, in degrees, with right turn as positive and left turn as negative
+- Set an appropriate number of `Segments` according to the above angle (`yaw / 7.5` rounded up recommended)
+
+## Helix
+
+- Set `End Height` to the height difference between the end and the head
+- Others same as arc
+
+## Roller
+
+- Set `Bend X` to the angle between the end direction and the start direction, in degrees, with pressing down as positive and lifting up as negative
+- Others same as arc
+
+## Twist
+
+- Set `Bend Z` to the angle between the end direction and the start direction, in degrees, with counterclockwise twist as positive and clockwise as negative
+- Others same as arc
+
+:::warning
+
+To avoid weird results:
+
+- Don't set `End Height` and `Bend X` at the same time
+- Don't set `Bend X` and `Bend Y` at the same time
+
+:::
+
+## Corner
+
+- Choose `Corner` as `Generator Type`
+- Set the corresponding `Size` according to the road width
+- Click to modify the textures and styles of the edges and corners

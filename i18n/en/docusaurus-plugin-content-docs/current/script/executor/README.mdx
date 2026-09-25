@@ -1,0 +1,99 @@
+---
+sidebar_position: 2
+---
+
+# Executor
+
+:::tip
+
+Executors need to be used together with [triggers](../trigger.mdx).
+
+:::
+
+The types and signatures below are annotated using Python style
+
+## Global Variables
+
+### `globals.TriggerID: int | None`
+
+The trigger's ID which runs the current executor.
+
+### `globals.TriggeredItemID: int | None`
+
+The object's ID which activates the aforementioned trigger.
+
+## Register Variables to Inspector
+
+### Usage
+
+Write `//InspectorVariables<xxx1><xxx2>...` at the beginning of the executor to register variables such as `xxx1` and `xxx2` to the Inspector panel.
+
+:::tip
+
+If a variable name starts with `ID_`, it will be able to store a relative reference to an object ID.
+In this case, after saving a group of objects as a template and dragging it out of the asset library to use, the references to the objects will be calculated automatically and filled in.
+
+:::
+
+### How It Works
+
+For example, the following code is written at the beginning of the executor:
+
+```js
+//InspectorVariables<mush1><mush2>
+```
+
+You can write strings into the `mush1` and `mush2` input boxes in the Inspector panel respectively, say `42` and `43`.
+
+Then when the code actually runs, it is equivalent to having the following code injected at the beginning:
+
+```py
+mush = 42; mush2 = 43
+```
+
+So you can use the `mush1` and `mush2` variables in the rest of the code.
+
+:::tip
+
+Since code injection directly inserts the content of the input boxes into the code, when you want to use a variable of the string type,
+please wrap the content in the input box of the Inspector panel with **double quotes**.
+
+For example:
+
+```js
+//InspectorVariables<hello>
+```
+
+| hello | "Hello, World!" |
+| :---: | :-------------: |
+
+:::
+
+## API
+
+### Type Definitions
+
+| Name  |                                     Definition                                     |                                            Description                                            |
+| :---: | :--------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
+| vec2  |                             `tuple[float, float]`                                  |                                      list of numbers `[x, y]`                                     |
+| vec3  |                         `tuple[float, float, float]`                               |                                    list of numbers `[x, y, z]`                                    |
+| vec4  |                      `tuple[float, float, float, float]`                           |                                  list of numbers `[x, y, z, w]`                                   |
+| quat  |                      `tuple[float, float, float, float]`                           |                                 list of quaternions `[x, y, z, w]`                                 |
+| xform | `tuple[float, float, float, float, float, float, float, float, float, float]`       | `[px, py, pz, qx, qy, qz, qw, sx, sy, sz]`; `[0:3]`: position, `[3:7]`: rotation, `[7:10]`: scale. |
+| color |                                `vec3 \| vec4`                                       |                   `[r, g, b]` or `[r, g, b, a]`; `0 <= r, g, b, a <= 1`                          |
+
+### API Overview
+
+- [General](./general.mdx)
+- [Physics](./physics.mdx)
+- [Game Flow](./game-flow.mdx)
+- [Peripheral Input](./peripheral-input.mdx)
+- [Light](./light.mdx)
+- [Fog](./fog.mdx)
+- [Way Path](./way-path.mdx)
+- [Variable](./variable.mdx)
+- [Audio](./audio-player.mdx)
+- [Particle](./particle-emitter.mdx)
+- [Text](./text.mdx)
+- [UI](./ui.mdx)
+- [Math](./math.mdx)

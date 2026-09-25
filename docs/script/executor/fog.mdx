@@ -1,0 +1,29 @@
+---
+sidebar_position: 6
+---
+
+# 雾
+
+:::warning
+
+- 仅当场景中有雾时 API 才有效
+- 当前仅有下列场景存在雾
+  - 预设 Scene16：白天雾
+  - 预设 Scene17：夜晚雾
+
+:::
+
+## API
+
+### `SetFogDensity(density: float) -> None`
+
+设置雾密度。
+
+- `density`：雾密度
+
+### `SetFogDistance(near: float, far: float) -> None`
+
+设置雾的可见度。
+
+- `near`：可见度开始变差的距离
+- `far`：可见度达到最差的距离

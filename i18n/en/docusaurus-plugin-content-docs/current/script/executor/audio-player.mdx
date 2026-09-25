@@ -1,0 +1,31 @@
+---
+sidebar_position: 9
+---
+
+# Audio
+
+## API
+
+### `PlayAudio(ID: int) -> bool`
+
+Play the audio.
+
+- `returns`: whether it plays successfully
+
+### `PauseAudio(ID: int) -> bool`
+
+Pause the audio, which will resume from the paused position next time.
+
+- `returns`: whether it pauses successfully
+
+### `StopAudio(ID: int) -> bool`
+
+Stop the audio, which will play from the beginning next time.
+
+- `returns`: whether it stops successfully
+
+### `SetAudioVolume(ID: int, volume: float) -> None`
+
+Set the volume of the audio.
+
+- `volume`: volume, with range `0 <= v <= 1`

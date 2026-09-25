@@ -1,0 +1,382 @@
+---
+sidebar_position: 12
+---
+
+# UI
+
+## Game UI Related APIs
+
+### `UIHideGameUI() -> None`
+
+Hide the default game UI.
+
+### `UIShowGameUI() -> None`
+
+Show the default game UI.
+
+## General APIs
+
+### `UIGetCanvasSize() -> vec2`
+
+Get the size of the current game screen. (Baseline: `1920×1080`)
+
+- `returns`: width and height of the current game screen
+
+### `UICreate(elementType: Literal["Panel", "Text", "Image"]) -> int`
+
+Create a UI element.
+
+- `elementType`: type of the UI element
+  - `"Panel"`: panel, used to lay out and organize other UI elements, equivalent to a folder
+  - `"Text"`: text
+  - `"Image"`: image
+- `returns`: ID of the created UI element
+
+### `UIDestroy(ID: int) -> bool`
+
+Destroy a UI element.
+
+- `returns`: whether it is destroyed successfully
+
+---
+
+### `UISetPosition(ID: int, x: float, y: float) -> None`
+
+Set the position of a UI element.
+
+- `x`: position on X axis
+- `y`: position on Y axis
+
+### `UIGetPosition(ID: int) -> vec2`
+
+Get the position of a UI element.
+
+- `returns`: X and Y position of the UI element
+
+### `UISetSize(ID: int, width: float, height: float) -> None`
+
+Set the size of a UI element.
+
+- `width`: width of the UI element
+- `height`: height of the UI element
+
+### `UIGetSize(ID: int) -> vec2`
+
+Get the size of a UI element.
+
+- `returns`: width and height of the UI element
+
+### `UISetScale(ID: int, x: float, y: float) -> None`
+
+Set the scale ratio of a UI element.
+
+- `x`: scale ratio on X axis
+- `y`: scale ratio on Y axis
+
+### `UIGetScale(ID: int) -> vec2`
+
+Get the scale ratio of a UI element.
+
+- `returns`: scale ratio of the UI element on X and Y axes
+
+### `UISetRotation(ID: int, degrees: float) -> None`
+
+Set the angle of rotation of a UI element.
+
+- `degrees`: angle of rotation, with range `r: 0 <= r < 360`
+
+### `UIGetRotation(ID: int) -> float`
+
+Get the angle of rotation of a UI element.
+
+- `returns`: current angle of rotation, with range `r: 0 <= r < 360`
+
+### `UISetAnchorMin(ID: int, x: float, y: float) -> None`
+
+Set the min anchor of a UI element.
+
+- `x`: position of the anchor on X axis
+- `y`: position of the anchor on Y axis
+
+### `UIGetAnchorMin(ID: int) -> vec2`
+
+Get the min anchor of a UI element.
+
+- `returns`: X and Y coordinate of the min anchor
+
+### `UISetAnchorMax(ID: int, x: float, y: float) -> None`
+
+Set the max anchor of a UI element.
+
+- `x`: position of the anchor on X axis
+- `y`: position of the anchor on Y axis
+
+### `UIGetAnchorMax(ID: int) -> vec2`
+
+Get the max anchor of a UI element.
+
+- `returns`: X and Y coordinate of the max anchor
+
+### `UISetPivot(ID: int, x: float, y: float) -> None`
+
+Set the pivot of a UI element.
+
+- `x`: position of the pivot on X axis
+- `y`: position of the pivot on Y axis
+
+### `UIGetPivot(ID: int) -> vec2`
+
+Get the pivot of a UI element.
+
+- `returns`: X and Y coordinate of the pivot
+
+### `UISetEnabled(ID: int, enabled: bool) -> None`
+
+Set whether a UI element is enabled.
+
+- `enabled`: whether to enable the UI element
+
+### `UIGetEnabled(ID: int) -> bool`
+
+Get whether a UI element is enabled.
+
+- `returns`: whether the UI element is enabled
+
+### `UISetParent(ID: int, parentID: int) -> None`
+
+Set the parent of a UI element.
+
+- `parentID`: ID of the parent UI element, `0` means no parent element
+
+### `UIGetParent(ID: int) -> int`
+
+Get the parent of a UI element.
+
+- `returns`: ID of the parent UI element, `0` means no parent element
+
+---
+
+### `UISetColor(ID: int, r: float, g: float, b: float, a: float) -> None`
+
+Set the color of a UI element.
+
+- `r`: red channel, `0 <= r <= 1`
+- `g`: green channel, `0 <= g <= 1`
+- `b`: blue channel, `0 <= b <= 1`
+- `a`: alpha channel, `0 <= a <= 1`
+  - `0`: fully transparent
+  - `1`: fully opaque
+
+### `UIGetColor(ID: int) -> vec4`
+
+Get the color of a UI element.
+
+- `returns`: color value containing the four color channels `r`, `g`, `b` and `a`, all within range `[0, 1]`.
+
+### `UISetAlpha(ID: int, alpha: float) -> None`
+
+Set the opacity of a UI element.
+
+- `alpha`: opacity
+
+### `UIGetAlpha(ID: int) -> float`
+
+Get the opacity of a UI element.
+
+- `returns`: current opacity
+
+### `UISetMask(ID: int, enabled: bool) -> None`
+
+Set whether to enable mask for a UI element.
+
+- `enabled`: whether to enable mask
+
+### `UIGetMask(ID: int) -> bool`
+
+Get whether mask is enabled for a UI element.
+
+- `returns`: whether mask is enabled
+
+### `UISetMaskable(ID: int, maskable: bool) -> None`
+
+Set whether a UI element can be clipped by the mask of its parent.
+
+- `maskable`: whether the element is allowed to be masked
+
+### `UIGetMaskable(ID: int) -> bool`
+
+Get whether a UI element can be masked.
+
+- `returns`: whether the element is allowed to be masked
+
+### `UISetShowMaskGraphic(ID: int, show: bool) -> None`
+
+Set whether to show the mask graphic itself when mask is enabled.
+
+- `show`: whether to show the mask graphic
+
+### `UIGetShowMaskGraphic(ID: int) -> bool`
+
+Get whether the mask graphic itself is shown when mask is enabled.
+
+- `returns`: whether the mask graphic is shown
+
+### `UISetRaycastTarget(ID: int, enabled: bool) -> None`
+
+Set whether a UI element serves as a raycast target.
+
+- `enabled`: whether to enable the raycast target
+
+### `UIGetRaycastTarget(ID: int) -> bool`
+
+Get whether a UI element serves as a raycast target.
+
+- `returns`: whether the raycast target is enabled
+
+### `UISetRaycastEvent(ID: int, enabled: bool) -> None`
+
+Set whether to enable raycast event for a UI element.
+
+Once enabled, you can poll whether the element is clicked with `UIGetClicked()`.
+
+- `enabled`: whether to enable raycast event
+
+### `UIGetRaycastEvent(ID: int) -> bool`
+
+Get whether raycast event is enabled for a UI element.
+
+- `returns`: whether raycast event is enabled
+
+### `UIGetClicked(ID: int) -> bool`
+
+Get whether a UI element is clicked.
+
+This interface uses a latching mechanism: the state is set once the element is clicked, and is cleared automatically after you call this interface to read it.
+
+- `returns`: whether a click event is detected
+
+## Text UI Related APIs
+
+### `UISetText(ID: int, text: str) -> None`
+
+Set the content of text of a text UI element.
+
+- `text`: content of text to display
+
+### `UIGetText(ID: int) -> str`
+
+Get the content of text of a text UI element.
+
+- `returns`: current content of text
+
+### `UISetFontSize(ID: int, size: float) -> None`
+
+Set the font size of a text UI element.
+
+- `size`: font size
+
+### `UIGetFontSize(ID: int) -> float`
+
+Get the font size of a text UI element.
+
+- `returns`: current font size
+
+### `UISetTextAlignH(ID: int, align: Literal["Left", "Center", "Right"]) -> None`
+
+Set the horizontal alignment of text.
+
+- `align`: horizontal alignment
+  - `"Left"`: left aligned
+  - `"Center"`: centered
+  - `"Right"`: right aligned
+
+### `UIGetTextAlignH(ID: int) -> Literal["Left", "Center", "Right"]`
+
+Get the horizontal alignment of text.
+
+- `returns`: current horizontal alignment
+
+### `UISetTextAlignV(ID: int, align: Literal["Top", "Middle", "Bottom"]) -> None`
+
+Set the vertical alignment of text.
+
+- `align`: vertical alignment
+  - `"Top"`: top aligned
+  - `"Middle"`: vertically centered
+  - `"Bottom"`: bottom aligned
+
+### `UIGetTextAlignV(ID: int) -> Literal["Top", "Middle", "Bottom"]`
+
+Get the vertical alignment of text.
+
+- `returns`: current vertical alignment
+
+### `UISetTextWrapping(ID: int, wrapping: bool) -> None`
+
+Set whether text wraps automatically.
+
+- `wrapping`: whether to enable automatic text wrapping
+
+### `UIGetTextWrapping(ID: int) -> bool`
+
+Get whether automatic text wrapping is enabled.
+
+- `returns`: whether automatic text wrapping is enabled
+
+## Image UI Related APIs
+
+### `UISetTexture(ID: int, path: str) -> None`
+
+Set the texture of an image UI element.
+
+- `path`: path of the texture asset, set to an empty string to use a white placeholder
+
+### `UIGetTexture(ID: int) -> str`
+
+Get the path of the texture currently used by an image UI element.
+
+- `returns`: current path of the texture asset
+
+### `UISetUVRect(ID: int, x: float, y: float, width: float, height: float) -> None`
+
+Set the UV rect of an image UI element.
+
+- `x`: X coordinate of the UV rect
+- `y`: Y coordinate of the UV rect
+- `width`: width of the UV rect
+- `height`: height of the UV rect
+
+### `UIGetUVRect(ID: int) -> list`
+
+Get the current UV rect of an image UI element.
+
+- `returns`: UV rect containing `[x, y, width, height]`
+
+### `UISetAspectRatioMode(ID: int, mode: Literal["None", "WidthControlsHeight", "HeightControlsWidth", "FitInParent", "EnvelopeParent"]) -> None`
+
+Set the aspect ratio mode of a UI element.
+
+- `mode`: aspect ratio mode
+  - `"None"`: no aspect ratio constraint
+  - `"WidthControlsHeight"`: height determined by width
+  - `"HeightControlsWidth"`: width determined by height
+  - `"FitInParent"`: keep the aspect ratio and fit entirely inside the parent element
+  - `"EnvelopeParent"`: keep the aspect ratio and cover the area of the parent element
+
+### `UIGetAspectRatioMode(ID: int) -> Literal["None", "WidthControlsHeight", "HeightControlsWidth", "FitInParent", "EnvelopeParent"]`
+
+Get the current aspect ratio mode of a UI element.
+
+- `returns`: current aspect ratio mode
+
+### `UISetAspectRatio(ID: int, ratio: float) -> None`
+
+Set the aspect ratio of a UI element.
+
+- `ratio`: aspect ratio, usually expressed as `width / height`
+
+### `UIGetAspectRatio(ID: int) -> float`
+
+Get the current aspect ratio of a UI element.
+
+- `returns`: current aspect ratio

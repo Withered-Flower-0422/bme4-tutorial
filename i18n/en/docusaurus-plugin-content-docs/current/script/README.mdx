@@ -1,0 +1,31 @@
+---
+sidebar_position: 3
+---
+
+# Scripting
+
+The Scripting section will introduce the script system of BME4.
+
+Reading suggestions:
+
+- BME4 uses MiniScript as its scripting language. This tutorial doesn't include a MiniScript language tutorial, please go to the [MiniScript official site](https://miniscript.org/) to learn it yourself
+- After learning everything in this section, you will be able to write scripts and create maps with unique mechanics
+
+## MiniScript Simple Guide
+
+- MiniScript official site: [https://miniscript.org/](https://miniscript.org/)
+  - Read [official manual](https://miniscript.org/files/MiniScript-Manual.pdf) and [quick start](https://miniscript.org/files/MiniScript-QuickRef.pdf) first
+  - There's an official [playground](https://miniscript.org/tryit/)
+- MiniScript is a weak and dynamic typing language (similar to PHP)
+  - Variables will be converted to another type automatically and implicitly whenever possible, without raising exceptions
+- MiniScript has these variable types: `number` `string` `list` `map`
+- MiniScript **doesn't** have `int` type (similar to JavaScript)
+  - All `number`s are `double`s
+  - No exception of division by zero, and there's `INF` and `nan`
+  - Take care of floating point comparisons
+- MiniScript **doesn't** have `bool` type (similar to C)
+  - `true` is `1`, `false` is `0`
+  - In `if` statements, `0` `""` `[]` `{}` `null` are regarded as false, others as true
+- MiniScript passes everything by reference whenever possible (similar to Python)
+  - When copying a `list`, remember to use syntax like `b = a[:]`
+  - **No** deep copy function, so avoid using complicated data structures

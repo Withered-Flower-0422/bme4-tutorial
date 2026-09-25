@@ -1,0 +1,31 @@
+---
+sidebar_position: 3
+---
+
+# 脚本
+
+脚本板块将介绍 BME4 的脚本系统。
+
+阅读建议：
+
+- BME4 采用 MiniScript 作为脚本语言。本教程不包含 MiniScript 语言教程，请自行前往 [MiniScript 官方网站](https://miniscript.org/) 学习
+- 学完本板块的内容后，你将有能力编写脚本，制作出具有独特机制的地图
+
+## MiniScript 简要说明
+
+- MiniScript 官方网站：[https://miniscript.org/](https://miniscript.org/)
+  - 请先阅读 [官方文档](https://miniscript.org/files/MiniScript-Manual.pdf) 和 [快速入门](https://miniscript.org/files/MiniScript-QuickRef.pdf)
+  - 官方提供 [演练场](https://miniscript.org/tryit/)
+- MiniScript 是弱类型动态语言（类似 PHP）
+  - 变量会在任何可能的情形自动隐式转换类型，且不抛出异常
+- MiniScript 的变量类型：`number` `string` `list` `map`
+- MiniScript **没有** `int` 类型（类似 JavaScript）
+  - 所有 `number` 均为 `double`
+  - 没有被零除异常，有 `INF` 和 `nan`
+  - 请注意浮点数大小判断
+- MiniScript **没有** `bool` 类型（类似 C）
+  - `true` 即为 `1`，`false` 即为 `0`
+  - `if` 条件判断语句中，`0` `""` `[]` `{}` `null` 视为假，其它视为真
+- MiniScript 会在任何可能的情形传引用（类似 Python）
+  - 复制 `list` 时，请务必使用 `b = a[:]` 的语法
+  - **没有**深拷贝功能，请尽量避免使用复杂数据结构

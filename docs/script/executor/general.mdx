@@ -1,0 +1,46 @@
+---
+sidebar_position: 1
+---
+
+# 通用
+
+## API
+
+### `GetTransform(ID: int) -> xform`
+
+读取元件变换参数。
+
+- `returns`：变换参数
+
+### `SetTransform(ID: int, transform: xform) -> None`
+
+改变元件变换参数。
+
+- `transform`：变换参数
+
+### `SetGravity(gravity: vec3) -> None`
+
+改变重力。
+
+- `gravity`：重力沿三轴的分量
+
+### `Instantiate(ID: int, transform: xform) -> int`
+
+根据元件模板生成新元件。
+
+- `transform`：变换参数
+- `returns`：新元件编号
+
+### `SetActive(ID: int, active: bool) -> None`
+
+设置物体激活状态，未激活的物体会隐藏并失去功能。
+
+- `active`：是否激活
+
+### `Execute(ID: int) -> None`
+
+运行另一个执行器。
+
+### `Destroy(ID: int) -> None`
+
+销毁物体。

@@ -1,0 +1,78 @@
+---
+sidebar_position: 1
+---
+
+# Preparation
+
+## Start the Map Editor
+
+Launch it via Steam and select `Play BME4` to launch BME4.
+
+:::tip
+
+Both Ballex and BME4 can be launched by double-clicking them in a local directory. Make sure Steam has been launched and logged in before launching.
+
+:::
+
+## Adjust the Interface
+
+### Change Language
+
+`Settings → Language` / `设置 → 语言`
+
+### Change UI Scale
+
+`Settings → UI Scale`
+
+Auto mode will select 200% or 100% depending on whether the resolution width is greater than 1920.
+
+### Change Power Save Mode
+
+`Settings → Power Save Mode`
+
+Power save mode will clamp the frame rate of the scene. The frame rate of the editor UI is not affected.
+
+### Set Ballex Path
+
+`Settings → Set Ballex Path`
+
+It should point to `Ballex.exe`. When you enter test map mode, the Ballex at this path will launch automatically.
+
+### Change Layout
+
+Drag the edge of a window to resize it, or drag its title to move it. A window can be closed with the button at its top-right corner.
+Closed windows can be called out again from the `Window → Window` menu, and the layout can be restored to default in the `Window → Layout` menu.
+
+## Windows
+
+### `Scene`
+
+Show the map layout. Most operations are done in this window.
+
+### `Inspector`
+
+View and adjust the posture and parameters of the selected object in this window.
+
+### `Hierarchy`
+
+List all objects in the current map and their hierarchical relationships.
+
+### `Assets`
+
+Store all available assets by category. There're 6 panels:
+
+- `Scenes`: list all map project files
+- `Items`: list all available objects
+- `Meshes`: list all imported custom meshes
+- `Textures`: list all imported texture images
+- `Materials`: list all available materials
+- `Audios`: list all imported audios
+
+## Coordinate System
+
+BME4 uses a left-handed coordinate system same as Unity3D and Cinema 4D.
+
+- `X+` goes right, `Y+` up and `Z+` front
+- The order of quaternion is `X` `Y` `Z` `W`
+- The euler angle uses `Y` `X` `Z` (yaw, pitch, roll) as rotation order and degree as unit
+- Grid length is 1 meter in the sense of modeling softwares

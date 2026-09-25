@@ -1,0 +1,53 @@
+---
+sidebar_position: 2
+---
+
+import { TitleBadge } from "@site/src/components/Badge"
+
+# Light
+
+## Parameter
+
+### `Light Type`
+
+- Type: `Literal`
+- Default: `Point`
+  - `Point`: ordinary point light
+  - `Directional`: used to simulate sunlight
+  - `Spot`: cone-shaped light like that emitted by a flashlight
+
+### `Range` <TitleBadge text="Light Type = Point" />
+
+- Type: `float`
+- Default: `5`
+
+### `Spot Angle` <TitleBadge text="Light Type = Spot" />
+
+- Type: `float` `float`
+- Default: `0` `0`
+
+### `Color`
+
+- Type: `float` `float` `float`
+- Default: `1` `1` `1`
+
+### `Intensity`
+
+- Type: `float`
+- Default: `1`
+
+### `Enable Shadow`
+
+- Type: `bool`
+- Default: `true`
+
+:::tip
+
+Shadow calculation is expensive, so use it with caution.
+
+:::
+
+### `Shadow Strength` <TitleBadge text="Enable Shadow = true" />
+
+- Type: `float`
+- Default: `1`

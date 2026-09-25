@@ -1,0 +1,45 @@
+---
+sidebar_position: 11
+---
+
+# Text
+
+## API
+
+### `SetText(ID: int, text: str) -> void`
+
+Set content of text.
+
+- `text`: content of text to set. `"\n"` escape for line break is supported.
+
+### `GetText(ID: int) -> str`
+
+Get content of text.
+
+- `returns`: content of text
+
+### `SetTextColor(ID: int, color: color) -> void`
+
+Set color of text.
+
+- `color`:
+  - `[r, g, b]`: RGB color (`a=1`)
+  - `[r, g, b, a]`: RGBA color
+
+### `GetTextColor(ID: int) -> vec4`
+
+Get color of text.
+
+- `returns`: color of text, always `[r, g, b, a]`
+
+### `SetTextSize(ID: int, size: float) -> void`
+
+Set font size of text.
+
+- `size`: font size
+
+### `GetTextSize(ID: int) -> float`
+
+Get font size of text.
+
+- `returns`: font size of text

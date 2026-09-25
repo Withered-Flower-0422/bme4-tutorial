@@ -1,0 +1,99 @@
+---
+sidebar_position: 2
+---
+
+# 执行器
+
+:::tip
+
+执行器需要配合 [触发器](../trigger.mdx) 使用。
+
+:::
+
+以下将使用 Python 风格标注类型和签名
+
+## 全局变量
+
+### `globals.TriggerID: int | None`
+
+运行当前执行器的触发器编号。
+
+### `globals.TriggeredItemID: int | None`
+
+使上述触发器生效的物体编号。
+
+## 注册变量至检测器
+
+### 使用方法
+
+在执行器开头写入 `//InspectorVariables<xxx1><xxx2>...` 即可将 `xxx1` `xxx2` 等变量注册至检测器面板。
+
+:::tip
+
+如果变量名以 `ID_`开头，则会则能保存元件 ID 的相对引用。
+此时将一组元件保存为模板后，再从素材库中拖出使用，元件的引用能被自动计算并填入。
+
+:::
+
+### 原理
+
+例如执行器开头写入了以下代码：
+
+```js
+//InspectorVariables<mush1><mush2>
+```
+
+可在检测器面板中的 `mush1` 和 `mush2` 输入框中分别写入字符串，假设为 `42` 和 `43` 。
+
+则实际运行代码时，相当于在开头额外注入了以下代码：
+
+```py
+mush = 42; mush2 = 43
+```
+
+因此可以在代码其余部分使用 `mush1` 和 `mush2` 变量。
+
+:::tip
+
+由于代码注入是直接将输入框内容插入至代码中，因此要使用字符串类型的变量时，
+请在检测器面板的输入框中将内容用 **双引号** 括起来。
+
+例如：
+
+```js
+//InspectorVariables<hello>
+```
+
+| hello | "Hello, World!" |
+| :---: | :-------------: |
+
+:::
+
+## API
+
+### 类型定义
+
+| 名称  |                                     定义                                      |                                            描述                                            |
+| :---: | :---------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+| vec2  |                             `tuple[float, float]`                             |                                     数值列表 `[x, y]`                                      |
+| vec3  |                         `tuple[float, float, float]`                          |                                    数值列表 `[x, y, z]`                                    |
+| vec4  |                      `tuple[float, float, float, float]`                      |                                  数值列表 `[x, y, z, w]`                                   |
+| quat  |                      `tuple[float, float, float, float]`                      |                                 四元数列表 `[x, y, z, w]`                                  |
+| xform | `tuple[float, float, float, float, float, float, float, float, float, float]` | `[px, py, pz, qx, qy, qz, qw, sx, sy, sz]`；`[0:3]`：位置，`[3:7]`：旋转，`[7:10]`：缩放。 |
+| color |                                `vec3 \| vec4`                                 |                   `[r, g, b]` 或 `[r, g, b, a]`；`0 <= r, g, b, a <= 1`                    |
+
+### API 一览
+
+- [通用](./general.mdx)
+- [物理](./physics.mdx)
+- [游戏流程](./game-flow.mdx)
+- [外设输入](./peripheral-input.mdx)
+- [光源](./light.mdx)
+- [雾](./fog.mdx)
+- [路径](./way-path.mdx)
+- [变量](./variable.mdx)
+- [音频](./audio-player.mdx)
+- [粒子](./particle-emitter.mdx)
+- [文本](./text.mdx)
+- [UI](./ui.mdx)
+- [数学](./math.mdx)
