@@ -53,6 +53,7 @@ export default {
     //   // indexName: "YOUR_INDEX_NAME",
     // },
     image: "img/ballex.ico",
+    colorMode: { defaultMode: "dark" },
     navbar: {
       title: "BME4 教程",
       logo: { alt: "BME4 Logo", src: "img/ballex.ico" },

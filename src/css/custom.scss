@@ -29,6 +29,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+footer {
+  z-index: 1;
+}
+
 .header-link {
   --size: 24px;
 

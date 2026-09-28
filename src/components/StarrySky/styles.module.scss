@@ -1,0 +1,53 @@
+@use "sass:math";
+@use "sass:string";
+
+@function getShadows($n, $c) {
+  $shadows: "#{math.random(100)}vw #{math.random(100)}vh #{$c}";
+  @for $i from 2 through $n {
+    $shadows: "#{$shadows}, #{math.random(100)}vw #{math.random(100)}vh #{$c}";
+  }
+  @return string.unquote($shadows);
+}
+
+$duration: 512s;
+$count: 512;
+@for $i from 1 through 5 {
+  $duration: math.div($duration, 2);
+  $count: math.floor(math.div($count, 2));
+
+  .layer#{$i} {
+    $size: #{$i}px;
+    position: fixed;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    z-index: -1;
+
+    left: 0;
+    top: 0;
+
+    box-shadow: getShadows($count, "#64748b");
+    [data-theme="dark"] & {
+      box-shadow: getShadows($count, "#fff");
+    }
+
+    animation: moveUp $duration linear infinite;
+
+    &::after {
+      content: "";
+      position: fixed;
+      left: 0;
+      top: 100vh;
+      border-radius: inherit;
+      width: inherit;
+      height: inherit;
+      box-shadow: inherit;
+    }
+  }
+}
+
+@keyframes moveUp {
+  to {
+    transform: translateY(-100vh);
+  }
+}
