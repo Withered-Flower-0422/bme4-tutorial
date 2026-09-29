@@ -3,10 +3,18 @@ import type { Config } from "@docusaurus/types"
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const titles = {
+  zh: "BME4 教程",
+  en: "BME4 Tutorial",
+}
+
+const locale = (process.env.DOCUSAURUS_CURRENT_LOCALE ??
+  "zh") as keyof typeof titles
+
 export default {
   plugins: ["docusaurus-plugin-sass"],
 
-  title: "BME4 教程",
+  title: titles[locale],
   favicon: "img/bme4.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -48,9 +56,9 @@ export default {
       { name: "algolia-site-verification", content: "926664E87D2F88BA" },
     ],
     // algolia: {
-    //   // appId: "YOUR_APP_ID",
-    //   // apiKey: "YOUR_SEARCH_API_KEY",
-    //   // indexName: "YOUR_INDEX_NAME",
+    //   appId: "IBJX10182H",
+    //   apiKey: "a8190d972d00e43848168f769afd39f8",
+    //   indexName: "YOUR_INDEX_NAME",
     // },
     image: "img/ballex.ico",
     colorMode: { defaultMode: "dark" },
@@ -61,6 +69,16 @@ export default {
         {
           type: "localeDropdown",
           position: "right",
+        },
+        {
+          href: `https://withered-flower-0422.github.io/BMT/${locale === "zh" ? "" : locale}`,
+          position: "right",
+          label: "Ballex²",
+        },
+        {
+          href: "https://discord.gg/ZaXwUuCYZ",
+          position: "right",
+          className: "header-link discord",
         },
         {
           href: "https://github.com/withered-flower-0422/bme4-tutorial",
@@ -75,7 +93,6 @@ export default {
       ],
     },
     footer: {
-      style: "dark",
       copyright: `版权所有 © ${new Date().getFullYear()} 枯萎の花，基于 Docusaurus 构建。`,
     },
     prism: {
