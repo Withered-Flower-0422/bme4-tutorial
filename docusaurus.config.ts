@@ -28,6 +28,8 @@ export default {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/bme4-tutorial/",
 
+  trailingSlash: true,
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "withered-flower-0422", // Usually your GitHub org/user name.
