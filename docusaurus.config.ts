@@ -4,19 +4,18 @@ import type { Config } from "@docusaurus/types"
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 type Locales = ["zh", "en"]
 
-const locale = (
-  process.env.DOCUSAURUS_CURRENT_LOCALE === "undefined"
-    ? "zh"
-    : process.env.DOCUSAURUS_CURRENT_LOCALE
-) as Locales[number]
+const i18n = {
+  defaultLocale: "zh" as const satisfies Locales[number],
+  locales: ["zh", "en"] satisfies Locales,
+}
+
+let locale = process.env.DOCUSAURUS_CURRENT_LOCALE as Locales[number]
+if (!i18n.locales.includes(locale)) locale = i18n.defaultLocale
 
 export default {
   plugins: ["docusaurus-plugin-sass"],
 
-  title: {
-    zh: "BME4 教程",
-    en: "BME4 Tutorial",
-  }[locale],
+  title: { zh: "BME4 教程", en: "BME4 Tutorial" }[locale],
 
   favicon: "img/bme4.ico",
 
@@ -39,10 +38,7 @@ export default {
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: "zh" satisfies Locales[number],
-    locales: ["zh", "en"] satisfies Locales,
-  },
+  i18n,
 
   presets: [
     [
@@ -75,7 +71,7 @@ export default {
           position: "right",
         },
         {
-          href: `https://withered-flower-0422.github.io/BMT/${locale === "zh" ? "" : locale}`,
+          href: `https://withered-flower-0422.github.io/BMT/${locale === i18n.defaultLocale ? "" : locale}`,
           position: "right",
           label: "Ballex²",
         },
