@@ -57,10 +57,10 @@ export default {
       { name: "algolia-site-verification", content: "926664E87D2F88BA" },
     ],
     algolia: {
-      container: "#docsearch",
       appId: "IBJX10182H",
       apiKey: "a8190d972d00e43848168f769afd39f8",
       indexName: "bme4-tutorial",
+      askAi: "b6a42d38-a679-4f18-91a5-4a105843b654",
     },
     image: "img/ballex.ico",
     colorMode: { defaultMode: "dark" },
