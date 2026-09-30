@@ -2,19 +2,22 @@ import { themes as prismThemes } from "prism-react-renderer"
 import type { Config } from "@docusaurus/types"
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+type Locales = ["zh", "en"]
 
-const titles = {
-  zh: "BME4 教程",
-  en: "BME4 Tutorial",
-}
-
-const locale = (process.env.DOCUSAURUS_CURRENT_LOCALE ??
-  "zh") as keyof typeof titles
+const locale = (
+  process.env.DOCUSAURUS_CURRENT_LOCALE === "undefined"
+    ? "zh"
+    : process.env.DOCUSAURUS_CURRENT_LOCALE
+) as Locales[number]
 
 export default {
   plugins: ["docusaurus-plugin-sass"],
 
-  title: titles[locale],
+  title: {
+    zh: "BME4 教程",
+    en: "BME4 Tutorial",
+  }[locale],
+
   favicon: "img/bme4.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -37,8 +40,8 @@ export default {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "zh",
-    locales: ["zh", "en"],
+    defaultLocale: "zh" satisfies Locales[number],
+    locales: ["zh", "en"] satisfies Locales,
   },
 
   presets: [
@@ -55,11 +58,12 @@ export default {
     metadata: [
       { name: "algolia-site-verification", content: "926664E87D2F88BA" },
     ],
-    // algolia: {
-    //   appId: "IBJX10182H",
-    //   apiKey: "a8190d972d00e43848168f769afd39f8",
-    //   indexName: "YOUR_INDEX_NAME",
-    // },
+    algolia: {
+      container: "#docsearch",
+      appId: "IBJX10182H",
+      apiKey: "a8190d972d00e43848168f769afd39f8",
+      indexName: "bme4-tutorial",
+    },
     image: "img/ballex.ico",
     colorMode: { defaultMode: "dark" },
     navbar: {
