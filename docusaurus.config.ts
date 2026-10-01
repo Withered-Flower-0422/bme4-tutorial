@@ -13,7 +13,7 @@ let locale = process.env.DOCUSAURUS_CURRENT_LOCALE as Locales[number]
 if (!i18n.locales.includes(locale)) locale = i18n.defaultLocale
 
 export default {
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: ["docusaurus-plugin-sass", "@docsearch/docusaurus-adapter"],
 
   title: { zh: "BME4 教程", en: "BME4 Tutorial" }[locale],
 
@@ -56,11 +56,13 @@ export default {
     metadata: [
       { name: "algolia-site-verification", content: "926664E87D2F88BA" },
     ],
-    algolia: {
+    docsearch: {
       appId: "IBJX10182H",
       apiKey: "a8190d972d00e43848168f769afd39f8",
-      indexName: "bme4-tutorial",
-      askAi: "b6a42d38-a679-4f18-91a5-4a105843b654",
+      indices: [{ name: "bme4-tutorial" }],
+      askAi: {
+        agentId: "b6a42d38-a679-4f18-91a5-4a105843b654",
+      },
     },
     image: "img/ballex.ico",
     colorMode: { defaultMode: "dark" },
