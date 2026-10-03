@@ -46,13 +46,32 @@ Spawn VFX, with rotation and scale supported.
 
 VFX table:
 
-|      vfxType      |                Description                |
-| :---------------: | :---------------------------------------: |
-|    `StartLife`    |              Start life VFX               |
-|    `Explosion`    |             Explosion VFX                 |
-|      `Steam`      |               Steam VFX                   |
-| `SwitchBallPartA` |     First half of the ball switch VFX     |
-| `SwitchBallPartB` |    Second half of the ball switch VFX     |
-|   `CollectLife`   |             Collect life VFX              |
-|   `CollectCure`   |             Collect cure VFX              |
-|  `CollectScore`   |             Collect score VFX             |
+|      vfxType      |            Description             |
+| :---------------: | :--------------------------------: |
+|    `StartLife`    |           Start life VFX           |
+|    `Explosion`    |           Explosion VFX            |
+|      `Steam`      |             Steam VFX              |
+| `SwitchBallPartA` | First half of the ball switch VFX  |
+| `SwitchBallPartB` | Second half of the ball switch VFX |
+|   `CollectLife`   |          Collect life VFX          |
+|   `CollectCure`   |          Collect cure VFX          |
+|  `CollectScore`   |         Collect score VFX          |
+
+### `ShowScreenEdgeFx(Type: Literal["Damaged" | "Health" | "Life" | "Score" | "Key"], intensity: float) -> None`
+
+Show screen edge effect.
+
+- `Type`: the type of the effect
+- `intensity`: the intensity of the effect
+
+### `ClearScreenEdgeFx(Type: Literal["Damaged" | "Health" | "Life" | "Score" | "Key" | ""]) -> None`
+
+Clear screen edge effect.
+
+- `Type`: the type of the effect or empty string `""` to clear all effects
+
+### `SetCameraHeight(height: float) -> None`
+
+Set the height of the camera.
+
+- `height`: the height of the camera

@@ -48,7 +48,7 @@ You can write strings into the `mush1` and `mush2` input boxes in the Inspector 
 Then when the code actually runs, it is equivalent to having the following code injected at the beginning:
 
 ```py
-mush = 42; mush2 = 43
+mush1 = 42; mush2 = 43
 ```
 
 So you can use the `mush1` and `mush2` variables in the rest of the code.
@@ -69,18 +69,84 @@ For example:
 
 :::
 
+## Import Modules
+
+### Usage
+
+1. Write `//define<xxx>` at the beginning of the executor to define the current executor as `xxx` module.
+2. Write `//import<xxx1><xxx2>...` anywhere in other executors to import `xxx1` `xxx2` modules.
+
+:::warning
+
+Be careful not to define modules with duplicate names.
+
+:::
+
+### Principle
+
+The principle is code injection.
+
+For example, there are two executors respectively written as follows:
+
+```js
+//define<mush1>
+mush1 = 42
+if mush1 > 42 then print "Hello"
+```
+
+```js
+//define<mush2>
+mush2 = 43
+if mush2 > 42 then print "World"
+```
+
+In another executor, the following code is written:
+
+```js
+foo = "Hello"
+
+//import<mush1><mush2>
+
+bar = "World"
+
+print foo + mush1 + mush2 + bar
+```
+
+When this executor runs, it is equivalent to running the following code:
+
+```js
+foo = "Hello"
+
+mush1 = 42
+if mush1 > 42 then print "Hello"
+
+mush2 = 43
+if mush2 > 42 then print "World"
+
+bar = "World"
+
+print foo + mush1 + mush2 + bar
+```
+
+:::warning
+
+Since the principle of module-import is code insertion, the error message will be difficult to locate when the code runs.
+**Please prepare for debugging difficulties when using module-import.**
+
+:::
+
 ## API
 
 ### Type Definitions
 
-| Name  |                                     Definition                                     |                                            Description                                            |
-| :---: | :--------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
-| vec2  |                             `tuple[float, float]`                                  |                                      list of numbers `[x, y]`                                     |
-| vec3  |                         `tuple[float, float, float]`                               |                                    list of numbers `[x, y, z]`                                    |
-| vec4  |                      `tuple[float, float, float, float]`                           |                                  list of numbers `[x, y, z, w]`                                   |
-| quat  |                      `tuple[float, float, float, float]`                           |                                 list of quaternions `[x, y, z, w]`                                 |
-| xform | `tuple[float, float, float, float, float, float, float, float, float, float]`       | `[px, py, pz, qx, qy, qz, qw, sx, sy, sz]`; `[0:3]`: position, `[3:7]`: rotation, `[7:10]`: scale. |
-| color |                                `vec3 \| vec4`                                       |                   `[r, g, b]` or `[r, g, b, a]`; `0 <= r, g, b, a <= 1`                          |
+| Name  |                                  Definition                                   |                                            Description                                             |
+| :---: | :---------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------: |
+| vec2  |                             `tuple[float, float]`                             |                                      list of numbers `[x, y]`                                      |
+| vec3  |                         `tuple[float, float, float]`                          |                                    list of numbers `[x, y, z]`                                     |
+| vec4  |                      `tuple[float, float, float, float]`                      |                                   list of numbers `[x, y, z, w]`                                   |
+| quat  |                      `tuple[float, float, float, float]`                      |                                 list of quaternions `[x, y, z, w]`                                 |
+| xform | `tuple[float, float, float, float, float, float, float, float, float, float]` | `[px, py, pz, qx, qy, qz, qw, sx, sy, sz]`; `[0:3]`: position, `[3:7]`: rotation, `[7:10]`: scale. |
+| color |                                `vec3 \| vec4`                                 |                       `[r, g, b]` or `[r, g, b, a]`; `0 <= r, g, b, a <= 1`                        |
 
 ### API Overview
 

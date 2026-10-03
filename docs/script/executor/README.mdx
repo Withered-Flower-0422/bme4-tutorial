@@ -48,7 +48,7 @@ sidebar_position: 2
 则实际运行代码时，相当于在开头额外注入了以下代码：
 
 ```py
-mush = 42; mush2 = 43
+mush1 = 42; mush2 = 43
 ```
 
 因此可以在代码其余部分使用 `mush1` 和 `mush2` 变量。
@@ -66,6 +66,72 @@ mush = 42; mush2 = 43
 
 | hello | "Hello, World!" |
 | :---: | :-------------: |
+
+:::
+
+## 导入模块
+
+### 使用方法
+
+1. 在执行器开头写入 `//define<xxx>` 定义该执行器为 `xxx` 模块。
+2. 可在其他执行器的任意位置写入 `//import<xxx1><xxx2>...` 即可导入 `xxx1` `xxx2` 等模块。
+
+:::warning
+
+定义模块时注意模块命名不要重复。
+
+:::
+
+### 原理
+
+本质是代码插入。
+
+例如有两个执行器分别写了以下代码：
+
+```js
+//define<mush1>
+mush1 = 42
+if mush1 > 42 then print "Hello"
+```
+
+```js
+//define<mush2>
+mush2 = 43
+if mush2 > 42 then print "World"
+```
+
+在另一个执行器中写入了以下代码：
+
+```js
+foo = "Hello"
+
+//import<mush1><mush2>
+
+bar = "World"
+
+print foo + mush1 + mush2 + bar
+```
+
+则该执行器在运行时，相当于运行以下代码：
+
+```js
+foo = "Hello"
+
+mush1 = 42
+if mush1 > 42 then print "Hello"
+
+mush2 = 43
+if mush2 > 42 then print "World"
+
+bar = "World"
+
+print foo + mush1 + mush2 + bar
+```
+
+:::warning
+
+由于导入模块的本质是代码插入，因此代码运行时报错提示的行数将会难以定位。
+**使用导入模块时请做好 debug 困难的准备。**
 
 :::
 

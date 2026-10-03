@@ -12,7 +12,7 @@ export default function Hero() {
         <Translate>BME4 教程</Translate>
       </Heading>
       <p className={clsx("hero__subtitle", styles.subtitle)}>
-        <Translate>基于 BME4 Ver. 4.0 Alpha15 编写</Translate>
+        <Translate>基于 BME4 Ver. 4.0 Alpha16 编写</Translate>
       </p>
       <div className={styles.buttons}>
         <Link className="button button--secondary button--lg" to="/docs/start">
