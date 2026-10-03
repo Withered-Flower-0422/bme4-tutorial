@@ -1,0 +1,39 @@
+---
+sidebar_position: 3
+---
+
+# Mesh & Material
+
+## API
+
+### `SetPhysicsObjectRenderMesh(ID: int, mesh_ref: str) -> None`
+
+Set mesh of a physics object.
+
+- `mesh_ref`: asset reference to the mesh
+
+### `SetPhysicsObjectRenderMaterials(ID: int, material_refs: list[str]) -> None`
+
+Set materials of a physics object.
+
+- `material_refs`: list of asset references to the materials
+
+### `SetPhysicsObjectColliderToSphere(ID: int, radius: float, offset: vec3) -> None`
+
+Set collider of a physics object to sphere.
+
+- `radius`: radius of the collider
+- `offset`: offset of the collider along each axis
+
+### `SetPhysicsObjectColliderToBox(ID: int, size: vec3, offset: vec3) -> None`
+
+Set collider of a physics object to box.
+
+- `size`: size of the collider along each axis
+- `offset`: offset of the collider along each axis
+
+### `SetPhysicsObjectColliderToMesh(ID: int, mesh_ref: str) -> None`
+
+Set collider of a physics object to a given mesh.
+
+- `mesh_ref`: asset reference to the mesh

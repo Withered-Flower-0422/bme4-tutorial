@@ -1,0 +1,39 @@
+---
+sidebar_position: 3
+---
+
+# 网格 & 材质
+
+## API
+
+### `SetPhysicsObjectRenderMesh(ID: int, mesh_ref: str) -> None`
+
+改变物理物体网格。
+
+- `mesh_ref`：网格素材引用
+
+### `SetPhysicsObjectRenderMaterials(ID: int, material_refs: list[str]) -> None`
+
+改变物理物体材质。
+
+- `material_refs`：材质素材引用列表
+
+### `SetPhysicsObjectColliderToSphere(ID: int, radius: float, offset: vec3) -> None`
+
+改变物理物体碰撞箱为球体。
+
+- `radius`：碰撞箱半径
+- `offset`：碰撞箱沿三轴的偏移
+
+### `SetPhysicsObjectColliderToBox(ID: int, size: vec3, offset: vec3) -> None`
+
+改变物理物体碰撞箱为长方体。
+
+- `size`：碰撞箱沿三轴的尺寸
+- `offset`：碰撞箱沿三轴的偏移
+
+### `SetPhysicsObjectColliderToMesh(ID: int, mesh_ref: str) -> None`
+
+改变物理物体碰撞箱为给定网格。
+
+- `mesh_ref`：网格素材引用
